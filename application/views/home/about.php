@@ -1,9 +1,9 @@
 <div role="main" class="main">
-    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/img/demos/digital-agency/slides/slide-digital-agency-1.jpg" style="min-height: 560px;">
+    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/home/img/demos/digital-agency/slides/slide-digital-agency-1.jpg" style="min-height: 560px;">
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-lg-8 mt-5">
-                    <h1 class="mt-5 pt-5 font-weight-semibold">About</h1>
+                    <h1 class="mt-5 pt-5 font-weight-semibold">Tentang Yayasan</h1>
                     <p class="mb-0 text-4 opacity-7">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
                 </div>
             </div>
@@ -11,37 +11,98 @@
     </section>
 
     <div class="container">
-        <div class="row mb-5 pb-5 mt-5 pt-5">
-            <div class="col-lg-9">
-                <div class="row">
+
+        <div class="row pt-4 appear-animation" data-appear-animation="fadeInUpShorter">
+            <div class="col-lg-7 pr-lg-5">
+                <h2 class="font-weight-normal line-height-1">A place where amazing things <strong class="font-weight-extra-bold">Get Done!</strong></h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat urna arcu, vel molestie nunc commodo non. Nullam vestibulum odio vitae fermentum rutrum.</p>
+                <p>Mauris lobortis nulla ut aliquet interdum. Donec commodo ac elit sed placerat. Mauris rhoncus est ac sodales gravida. In eros felis, elementum aliquam nisi vel, pellentesque faucibus nulla.</p>
+
+                <div class="row pt-4 my-5">
                     <div class="col-lg-6">
-                        <h4 class="font-weight-extra-bold">Company</h4>
-                        <p class="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                        <div class="feature-box feature-box-style-2 mb-4">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-support text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">Customer Support</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
+                        <div class="feature-box feature-box-style-2 mb-4">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-doc text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">HTML5 / CSS3 / JS</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
+                        <div class="feature-box feature-box-style-2 mb-4 mb-lg-0">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-social-google text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">500+ Google Fonts</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-6">
-                        <h4 class="font-weight-extra-bold">Mission</h4>
-                        <p class="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                        <div class="feature-box feature-box-style-2 mb-4">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-layers text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">Sliders</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
+                        <div class="feature-box feature-box-style-2 mb-4">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-user text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">Icons</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
+                        <div class="feature-box feature-box-style-2">
+                            <div class="feature-box-icon">
+                                <i class="icons icon-menu text-color-primary"></i>
+                            </div>
+                            <div class="feature-box-info">
+                                <h4 class="font-weight-bold text-4 mb-0">Buttons</h4>
+                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <blockquote class="mt-5 ml-4 blockquote-primary">
-                    <p>Pellentesque pellentesque eget tempor tellus. Fusce lacllentesque eget tempor tellus ellentesque pelleinia tempor malesuada.</p>
-                    <footer>- David Doe, CEO</footer>
-                </blockquote>
             </div>
-            <div class="col-lg-3 d-none d-sm-block">
-                <div class="row text-center mt-5 mt-lg-0">
-                    <div class="col-md-8 col-lg-6 mx-auto">
-                        <img class="img-fluid m-3 my-0 mt-lg-5" src="<?= base_url() ?>template/img/demos/digital-agency/office/our-office-1.jpg" alt="Office">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/img/demos/digital-agency/office/our-office-3.jpg" alt="Office">
-                    </div>
-                    <div class="col-md-8 col-lg-6 mx-auto">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/img/demos/digital-agency/office/our-office-2.jpg" alt="Office">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/img/demos/digital-agency/office/our-office-4.jpg" alt="Office">
-                    </div>
-                </div>
+            <div class="col-lg-5">
+                <h4 class="font-weight-normal line-height-1">Hubungi <strong class="font-weight-extra-bold">Kami</strong></h4>
+
+                <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
+                <!-- <div id="googlemaps" class="google-map small"></div> -->
+
+                <ul class="list list-icons list-icons-style-3 mt-4">
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>
+                    <li><i class="fas fa-phone"></i> <strong>Phone:</strong> (123) 456-789</li>
+                    <li><i class="far fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+                </ul>
+
+                <hr class="my-5">
+
+                <h4 class="font-weight-normal">Business <strong class="font-weight-extra-bold">Hours</strong></h4>
+                <ul class="list list-icons list-dark mt-4">
+                    <li><i class="far fa-clock"></i> Monday - Friday - 9am to 5pm</li>
+                    <li><i class="far fa-clock"></i> Saturday - 9am to 2pm</li>
+                    <li><i class="far fa-clock"></i> Sunday - Closed</li>
+                </ul>
             </div>
         </div>
+
     </div>
 
     <section class="section section-default border-0">
@@ -147,24 +208,24 @@
                 <div class="content-grid col mt-5 mb-4">
                     <div class="row content-grid-row">
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-1.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-1.png" style="max-width: 180px" alt="">
                         </div>
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-2.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-2.png" style="max-width: 180px" alt="">
                         </div>
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-3.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-3.png" style="max-width: 180px" alt="">
                         </div>
                     </div>
                     <div class="row content-grid-row">
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-4.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-4.png" style="max-width: 180px" alt="">
                         </div>
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-5.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-5.png" style="max-width: 180px" alt="">
                         </div>
                         <div class="content-grid-item col-lg-4 text-center py-4">
-                            <img class="img-fluid" src="<?= base_url() ?>template/img/logos/logo-6.png" style="max-width: 180px" alt="">
+                            <img class="img-fluid" src="<?= base_url() ?>template/home/img/logos/logo-6.png" style="max-width: 180px" alt="">
                         </div>
                     </div>
                 </div>

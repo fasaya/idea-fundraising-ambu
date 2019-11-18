@@ -1,0 +1,63 @@
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Donasi (Baru)</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs mr-3">
+                <li><i class="fas fa-home"></i></li>
+                <li><span>Donasi</span></li>
+                <li><span>Baru</span></li>
+            </ol>
+        </div>
+    </header>
+
+    <!-- start: page -->
+
+    <div class="row">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                        <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                        <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                    </div>
+
+                    <h2 class="card-title">Basic with Table Tools</h2>
+                </header>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>No. HP</th>
+                                <th>E-mail</th>
+                                <th>Provinsi</th>
+                                <th>Jumlah Donasi</th>
+                                <th>Tanggal</th>
+                                <th>Bank</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($donasi_baru as $r) { ?>
+                                <tr>
+                                    <td><?= $r->kode; ?></td>
+                                    <td><?= $r->nama; ?></td>
+                                    <td>+62 <?= $r->no_hp; ?></td>
+                                    <td><?= $r->email; ?></td>
+                                    <td><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
+                                    <td>Rp <?= rupiah($r->jumlah_donasi); ?></td>
+                                    <td><?= $r->date; ?></td>
+                                    <td><?= $this->Helper->nama_bank($r->bank); ?></td>
+                                    <td class="text-center"><?= $this->Helper->status_donasi($r->status); ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- end: page -->
+</section>

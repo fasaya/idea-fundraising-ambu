@@ -23,21 +23,15 @@ class Home extends CI_Controller
 		$this->Home->view('home/about', $main);
 	}
 
-	public function visimisi()
+	public function visidanmisi()
 	{
 		$main['kosong'] = "";
-		$this->Home->view('home/about', $main);
+		$this->Home->view('home/visidanmisi', $main);
 	}
 
 	public function adrt()
 	{
 		$main['kosong'] = "";
-		$this->Home->view('home/about', $main);
-	}
-
-	public function kegiatan()
-	{
-		$main['kosong'] = "";
-		$this->Home->view('home/blog', $main);
+		$this->Home->view('home/adrt', $main);
 	}
 }

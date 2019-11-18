@@ -7,15 +7,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Demo </title>
+    <title>Yayasan Kasih Fibonacci</title>
 
     <!-- <meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="Porto - Responsive HTML5 Template">
 	<meta name="author" content="okler.net"> -->
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>template/img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="<?= base_url() ?>template/img/apple-touch-icon.png">
+    <link rel="shortcut icon" href="<?= base_url() ?>template/images/logo-4.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<?= base_url() ?>template/images/logo-4.png">
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
@@ -24,36 +24,36 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/animate/animate.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/simple-line-icons/css/simple-line-icons.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/owl.carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/owl.carousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/animate/animate.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/magnific-popup/magnific-popup.min.css">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/theme.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/theme-elements.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/theme-blog.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/theme-shop.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/theme.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/theme-elements.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/theme-blog.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/theme-shop.css">
 
     <!-- Current Page CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/rs-plugin/css/settings.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/rs-plugin/css/layers.css">
-    <link rel="stylesheet" href="<?= base_url() ?>template/vendor/rs-plugin/css/navigation.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/vendor/rs-plugin/css/navigation.css">
 
     <!-- Demo CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/demos/demo-digital-agency.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/demos/demo-digital-agency.css">
 
     <!-- Skin CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/skins/skin-digital-agency.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/skins/skin-digital-agency.css">
 
     <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>template/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url() ?>template/home/css/custom.css">
 
     <!-- Head Libs -->
-    <script src="<?= base_url() ?>template/vendor/modernizr/modernizr.min.js"></script>
+    <script src="<?= base_url() ?>template/home/vendor/modernizr/modernizr.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
@@ -83,6 +83,14 @@
         .my-float {
             margin-top: 16px;
         }
+
+        .social-icons li:hover.social-icons-whatsapp a {
+            background: #00d375;
+        }
+
+        .social-icons li:hover.social-icons-phone a {
+            background: #e5c03c;
+        }
     </style>
 
 
@@ -102,8 +110,8 @@
                         <div class="header-column">
                             <div class="header-row">
                                 <div class="header-logo">
-                                    <a href="index.html">
-                                        <img alt="Porto" width="82" height="40" src="<?= base_url() ?>template/img/logo-default-slim-dark.png">
+                                    <a href="<?= base_url() ?>">
+                                        <img height="55" src="<?= base_url() ?>template/images/logo-4.png" alt="Yayasan Kasih Fibonacci">
                                     </a>
                                 </div>
                             </div>
@@ -126,7 +134,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="nav-link" href="demo-digital-agency-contact.html">
+                                                    <a class="nav-link" href="<?= site_url() ?>home/visidanmisi">
                                                         Visi & Misi
                                                     </a>
                                                 </li>
@@ -136,7 +144,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="nav-link" href="<?= site_url() ?>home/kegiatan">
+                                                    <a class="nav-link" href="<?= site_url() ?>blog">
                                                         Kegiatan
                                                     </a>
                                                 </li>
@@ -154,9 +162,8 @@
                                 </div>
                                 <div class="ml-2 order-1 order-lg-2">
                                     <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean ml-0">
-                                        <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                        <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li class="social-icons-whatsapp"><a href="https://api.whatsapp.com/send?phone=6281933357030" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                                        <li class="social-icons-phone"><a href="tel:555-555-5555" target="_blank" title="Phone"><i class="fas fa-phone"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
