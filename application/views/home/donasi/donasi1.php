@@ -53,7 +53,7 @@
         <div class="col-lg-7 py-4">
             <h4 class="mb-4">Informasi Donatur</h4>
 
-            <form class="" action="<?= site_url() ?>donasi/infodonatur" method="post">
+            <form class="" action="<?= base_url() ?>donasi/infodonatur" method="post">
                 <?= $this->session->flashdata('message') ?>
                 <div class="form-group row">
                     <label class="col-sm-3 control-label text-sm-right pt-2">Nama Lengkap</label>

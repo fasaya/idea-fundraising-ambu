@@ -11,6 +11,8 @@
 		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
 		<meta name="author" content="okler.net"> -->
 
+	<link rel="shortcut icon" href="<?= base_url() ?>template/images/logo-4.png" type="image/x-icon" />
+
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -29,6 +31,8 @@
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/select2/css/select2.css" />
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/datatables/media/css/dataTables.bootstrap4.css" />
+	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/pnotify/pnotify.custom.css" />
+	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/css/theme.css" />
@@ -178,7 +182,7 @@
 								</li>
 								<li>
 									<a class="nav-link" href="<?= site_url() ?>adminpanel/donasibaru">
-										<span class="float-right badge badge-primary">182</span>
+										<span class="float-right badge badge-primary"><?= $this->Helper->cek_total_donasi_baru(); ?></span>
 										<i class="fas fa-sign-in-alt" aria-hidden="true"></i>
 										<span>Donasi (Baru)</span>
 									</a>
@@ -212,11 +216,23 @@
 												AD/RT
 											</a>
 										</li>
-										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
-												Kegiatan
-											</a>
-										</li>
+										<li class="nav-parent">
+				                                <a class="nav-link" href="#">
+				                                    Kegiatan
+				                                </a>
+				                                <ul class="nav nav-children">
+				                                    <li>
+				                                        <a href="<?= site_url() ?>adminpanel/blog">
+				                                            Semua
+				                                        </a>
+				                                    </li>
+				                                    <li>
+				                                        <a href="<?= site_url() ?>adminpanel/tambahblog">
+				                                            Tambah
+				                                        </a>
+				                                    </li>
+				                                </ul>
+				                            </li>
 									</ul>
 								</li>
 								<li class="nav-parent">
@@ -233,6 +249,11 @@
 										<li>
 											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
 												Bank
+											</a>
+										</li>
+										<li>
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+												Motto
 											</a>
 										</li>
 									</ul>

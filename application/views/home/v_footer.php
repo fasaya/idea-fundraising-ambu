@@ -30,7 +30,7 @@
                 <h5 class="text-5 text-transform-none font-weight-semibold text-color-default mb-4">Donasi</h5>
                 <div class="row">
                     <?php foreach ($bank as $r) { ?>
-                        <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                        <div class="col-sm-12 col-md-6 col-lg-6 text-center">
                             <img src="<?= base_url() ?>template/images/bank/<?= $r->img; ?>" alt="<?= $r->bank; ?>" style="width:90px;">
                             <p class="text-color-default opacity-7"><?= $r->bank; ?>: <?= $r->no_rekening; ?><br><?= $r->atas_nama; ?></p>
                         </div>

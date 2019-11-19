@@ -25,6 +25,7 @@
                     <h2 class="card-title">Basic with Table Tools</h2>
                 </header>
                 <div class="card-body">
+                    <?= $this->session->flashdata('message') ?>
                     <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
                         <thead>
                             <tr>
@@ -37,6 +38,7 @@
                                 <th>Tanggal</th>
                                 <th>Bank</th>
                                 <th>Status</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +52,8 @@
                                     <td>Rp <?= rupiah($r->jumlah_donasi); ?></td>
                                     <td><?= $r->date; ?></td>
                                     <td><?= $this->Helper->nama_bank($r->bank); ?></td>
-                                    <td class="text-center"><?= $this->Helper->status_donasi($r->status); ?></td>
+                                    <td class="text-center"><?= $this->Helper->status_donasi_baru($r->status); ?></td>
+                                    <td class="text-center"><a onclick="showDataToModal('<?= $r->kode; ?>')" class="modal-basic" href="#modal"><i class="fas fa-edit fa-lg text-dark"></i></a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -61,3 +64,22 @@
     </div>
     <!-- end: page -->
 </section>
+
+<!-- JS -->
+<script>
+    function showDataToModal(kode) {
+
+        if (kode != '') {
+            $.ajax({
+                url: "<?= base_url(); ?>adminpanel/fetch_donasi_baru",
+                method: "POST",
+                data: {
+                    kode: kode
+                },
+                success: function(data) {
+                    $('#isiCard').html(data);
+                }
+            });
+        }
+    }
+</script>

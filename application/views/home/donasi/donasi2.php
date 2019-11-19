@@ -72,7 +72,7 @@
                     <div class="mb-4">
                         <i class="icon-credit-card icons text-color-primary text-8"></i>
                         <h4 class="card-title mt-2 mb-2 text-4 font-weight-bold">Transfer Bank</h4>
-                        <form action="<?= site_url() ?>donasi/summary/<?= $kode; ?>" method="post">
+                        <form action="<?= base_url() ?>donasi/summary/<?= $kode; ?>" method="post">
                             <?php foreach ($bank as $r) { ?>
                                 <div class="radio mb-3">
                                     <label class="row">

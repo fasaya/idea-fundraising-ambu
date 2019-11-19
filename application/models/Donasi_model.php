@@ -22,7 +22,6 @@ class Donasi_model extends CI_Model
 
     // ######################################################################################
 
-    // Update address
     public function addDonasiBaru($data)
     {
 

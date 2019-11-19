@@ -17,9 +17,9 @@
 					<div class="tp-caption font-weight-light text-color-light ws-normal" data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]' data-x="left" data-hoffset="['3','35','35','35']" data-y="center" data-voffset="['65','65','65','95']" data-width="['690','690','690','800']" data-fontsize="['18','18','18','35']" data-lineheight="['29','29','29','40']">We create amazing solutins for our clients, contact us to learn how we can help.</div>
 
 
-					<a class="tp-caption btn btn-outline btn-primary font-weight-bold" href="#" data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="left" data-hoffset="['0','30','30','30']" data-y="center" data-voffset="['140','140','140','245']" data-paddingtop="['15','15','15','30']" data-paddingbottom="['15','15','15','30']" data-paddingleft="['40','40','40','50']" data-paddingright="['40','40','40','50']" data-fontsize="['13','13','13','25']" data-lineheight="['20','20','20','25']">PELAJARI</a>
+					<a class="tp-caption btn btn-outline btn-primary font-weight-bold" href="<?= base_url() ?>home/tentang" data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="left" data-hoffset="['0','30','30','30']" data-y="center" data-voffset="['140','140','140','245']" data-paddingtop="['15','15','15','30']" data-paddingbottom="['15','15','15','30']" data-paddingleft="['40','40','40','50']" data-paddingright="['40','40','40','50']" data-fontsize="['13','13','13','25']" data-lineheight="['20','20','20','25']">PELAJARI</a>
 
-					<a class="tp-caption btn btn-primary font-weight-bold" href="#" data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="left" data-hoffset="['185','185','220','340']" data-y="center" data-voffset="['140','140','140','245']" data-paddingtop="['16','16','16','31']" data-paddingbottom="['16','16','16','31']" data-paddingleft="['40','40','40','50']" data-paddingright="['40','40','40','50']" data-fontsize="['13','13','13','25']" data-lineheight="['20','20','20','25']">DONASI SEKARANG <i class="fas fa-arrow-right ml-1"></i></a>
+					<a class="tp-caption btn btn-primary font-weight-bold" href="<?= base_url() ?>donasi" data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="left" data-hoffset="['185','185','220','340']" data-y="center" data-voffset="['140','140','140','245']" data-paddingtop="['16','16','16','31']" data-paddingbottom="['16','16','16','31']" data-paddingleft="['40','40','40','50']" data-paddingright="['40','40','40','50']" data-fontsize="['13','13','13','25']" data-lineheight="['20','20','20','25']">DONASI SEKARANG <i class="fas fa-arrow-right ml-1"></i></a>
 
 				</li>
 
@@ -46,7 +46,8 @@
 					<div class="counter appear-animation mb-5" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
 						<!-- <i class="icons icon-user text-8 mb-3"></i> -->
 						<i class="fas fa-users fa-3x text-12 mb-4"></i>
-						<strong class="font-weight-extra-bold mb-1" data-to="30000" data-append="+">0</strong>
+						<strong class="font-weight-extra-bold mb-1" data-to="<?= $this->Helper->setting('DONATUR'); ?>" data-append="+">0</strong>
+						<!-- <strong class="font-weight-extra-bold mb-1"><?= $this->Helper->setting('DONATUR'); ?></strong> -->
 						<label>TOTAL DONATUR</label>
 						<p class="text-color-primary text-2 line-height-1 mb-0">Total Donatur</p>
 					</div>
@@ -56,7 +57,8 @@
 						<!-- <i class="icons icon-screen-desktop text-8 mb-3"></i> -->
 						<i class="fas fa-hand-holding-heart fa-3x text-12 mb-4"></i>
 						<h3 class="mb-0">Rp</h3>
-						<strong class="font-weight-extra-bold mb-1" data-to="4520500" data-append="+">0</strong>
+						<!-- <strong class="font-weight-extra-bold mb-1" data-to="<?= $this->Helper->setting('DONASI'); ?>" data-append="+">0</strong> -->
+						<strong class="font-weight-extra-bold mb-1"><?= rupiah($this->Helper->setting('DONASI')); ?></strong>
 						<label>JUMLAH DONASI</label>
 						<p class="text-color-primary text-2 line-height-1 mb-0">Jumlah Donasi</p>
 					</div>
@@ -65,7 +67,7 @@
 		</div>
 	</section>
 
-	<div class="container card-body" style="height: 550px;">
+	<!-- <div class="container card-body" style="height: 550px;">
 		<div class="row">
 			<div class="col-sm-12 col-lg-12 mb-12 mb-lg-12">
 				<h1 class="text-center appear-animation mt-3" data-appear-animation="fadeInRightShorter">Donatur</h1>
@@ -171,6 +173,43 @@
 								<td>Sulawesi Selatan</td>
 								<td>Rp 500.000</td>
 							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="container card-body" style="height: 550px;">
+		<div class="row">
+			<div class="col-sm-12 col-lg-12 mb-12 mb-lg-12">
+				<h1 class="text-center appear-animation mt-3" data-appear-animation="fadeInRightShorter">Donatur</h1>
+				<table class="table table-responsive-md table-striped mb-0 appear-animation" data-appear-animation="fadeInRightShorter" id="" style="width:100%;">
+					<thead>
+						<tr>
+							<th width="40%">Nama</th>
+							<th width="30%">Provinsi</th>
+							<th width="30%">Nominal</th>
+						</tr>
+					</thead>
+				</table>
+				<div id="contain" class="appear-animation table-responsive" data-appear-animation="fadeInRightShorter" style="height: 350px; overflow-y: auto; ">
+					<table class="table table-responsive-md table-striped mb-0 table-hover" id="">
+						<tbody>
+						<?php foreach ($donasi as $r) { 
+							if($r->anonim == "1" ){
+								$nama = "Hamba Allah";
+							}else{
+								$nama = $r->nama;
+							}
+							?>
+							
+                                <tr>
+                                    <td width="40%"><?= $nama; ?></td>
+                                    <td width="30%"><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
+									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
+								</tr>
+                            <?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -368,4 +407,23 @@
 			$('#' + id_header + ' > thead th:nth-child(' + i + ')').css('width', th_width + 'px');
 		}
 	}
+
+
+
+
+	var $el = $(".table-responsive");
+
+	function anim() {
+		var st = $el.scrollTop();
+		var sb = $el.prop("scrollHeight") - $el.innerHeight();
+		$el.animate({
+			scrollTop: st < sb / 2 ? sb : 0
+		}, 10000, anim);
+	}
+
+	function stop() {
+		$el.stop();
+	}
+	anim();
+	$el.hover(stop, anim);
 </script>

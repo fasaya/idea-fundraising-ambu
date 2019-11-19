@@ -17,12 +17,13 @@ class Home_model extends CI_Model
     function viewdonasi($view, $main)
     {
         $header['kosong'] = "";
+        $footer['bank'] = $this->bank();
 
         $this->load->view('home/v_header', $header);
         $this->load->view('home/donasi/donasi_header');
         $this->load->view($view, $main);
         $this->load->view('home/donasi/donasi_footer', $main);
-        $this->load->view('home/v_footer');
+        $this->load->view('home/v_footer', $footer);
     }
 
     function bank()

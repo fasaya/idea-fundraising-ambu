@@ -8,12 +8,13 @@ class Home extends CI_Controller
 		parent::__construct();
 		$this->load->model('Helper_model', 'Helper');
 		$this->load->model('Home_model', 'Home');
+		$this->load->model('Admin_model', 'Admin');
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		$main['kosong'] = "";
+		$main['donasi'] = $this->Admin->donasi();
 		$this->Home->view('home/home', $main);
 	}
 

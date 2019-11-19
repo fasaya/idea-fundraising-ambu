@@ -25,86 +25,41 @@
                     <h2 class="card-title">Basic with Table Tools</h2>
                 </header>
                 <div class="card-body">
+                    <?= $this->session->flashdata('message') ?>
                     <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
                         <thead>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th class="d-lg-none">Engine version</th>
-                                <th class="d-lg-none">CSS grade</th>
+                                <th>#</th>
+                                <th>Nama</th>
+                                <th>No. HP</th>
+                                <th>E-mail</th>
+                                <th>Provinsi</th>
+                                <th>Jumlah Donasi</th>
+                                <th>Tanggal</th>
+                                <th>Bank</th>
+                                <th>Keterangan</th>
+                                <th>Anonim</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center d-lg-none">4</td>
-                                <td class="center d-lg-none">X</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center d-lg-none">5</td>
-                                <td class="center d-lg-none">C</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.5
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center d-lg-none">5.5</td>
-                                <td class="center d-lg-none">A</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Dillo 0.8</td>
-                                <td>Embedded devices</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">X</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Links</td>
-                                <td>Text only</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">X</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>Lynx</td>
-                                <td>Text only</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">X</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>IE Mobile</td>
-                                <td>Windows Mobile 6</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">C</td>
-                            </tr>
-                            <tr>
-                                <td>Misc</td>
-                                <td>PSP browser</td>
-                                <td>PSP</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">C</td>
-                            </tr>
-                            <tr class="gradeU">
-                                <td>Other browsers</td>
-                                <td>All others</td>
-                                <td>-</td>
-                                <td class="center d-lg-none">-</td>
-                                <td class="center d-lg-none">U</td>
-                            </tr>
+                            <?php
+                            $no = 1;
+                            foreach ($donasi as $r) { ?>
+                                <tr>
+                                    <td><?= $no; ?>.</td>
+                                    <td><?= $r->nama; ?></td>
+                                    <td>+62 <?= $r->no_hp; ?></td>
+                                    <td><?= $r->email; ?></td>
+                                    <td><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
+                                    <td>Rp <?= rupiah($r->jumlah_donasi); ?></td>
+                                    <td><?= $r->date; ?></td>
+                                    <td><?= $this->Helper->nama_bank($r->bank); ?></td>
+                                    <td><?= $r->keterangan; ?></td>
+                                    <td class="text-center"><?= $this->Helper->anonim($r->anonim); ?></td>
+                                    <td class="text-center"><a href="<?= site_url() ?>adminpanel/editdonasi/<?= $r->id_donasi ?>"><i class="fas fa-edit fa-lg text-dark"></i></a></td>
+                                </tr>
+                            <?php $no++; } ?>
                         </tbody>
                     </table>
                 </div>

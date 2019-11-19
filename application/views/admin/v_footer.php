@@ -1,5 +1,23 @@
 </div>
 
+<!-- Modal -->
+<div id="modal" class="zoom-anim-dialog modal-block modal-header-color modal-block-primary mfp-hide">
+    <section class="card" id="isiCard">
+        <header class="card-header">
+            <h2 class="card-title"></h2>
+        </header>
+        <div class="card-body">
+            <p class="text-center">Loading...</p>
+        </div>
+        <footer class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
 
 </section>
 
@@ -25,6 +43,9 @@
 <script src="<?= base_url() ?>template/admin/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
 <script src="<?= base_url() ?>template/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
 <script src="<?= base_url() ?>template/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+<script src="<?= base_url() ?>template/admin/vendor/pnotify/pnotify.custom.js"></script>
+<script src="<?= base_url() ?>template/admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+<script src="<?= base_url() ?>template/admin/vendor/autosize/autosize.js"></script>
 
 <!-- Theme Base, Components and Settings -->
 <script src="<?= base_url() ?>template/admin/js/theme.js"></script>
@@ -39,5 +60,7 @@
 <script src="<?= base_url() ?>template/admin/js/examples/examples.datatables.default.js"></script>
 <script src="<?= base_url() ?>template/admin/js/examples/examples.datatables.row.with.details.js"></script>
 <script src="<?= base_url() ?>template/admin/js/examples/examples.datatables.tabletools.js"></script>
+<script src="<?= base_url() ?>template/admin/js/examples/examples.modals.js"></script>
 </body>
+
 </html>
