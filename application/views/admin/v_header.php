@@ -197,42 +197,47 @@
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/halamanhome">
 												Home
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/halamantentang">
 												Tentang
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/halamanvisimisi">
 												Visi dan Misi
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/halamanadrt">
 												AD/RT
 											</a>
 										</li>
+										<li>
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/strukturorg">
+												Struktur Organisasi
+											</a>
+										</li>
 										<li class="nav-parent">
-				                                <a class="nav-link" href="#">
-				                                    Kegiatan
-				                                </a>
-				                                <ul class="nav nav-children">
-				                                    <li>
-				                                        <a href="<?= site_url() ?>adminpanel/blog">
-				                                            Semua
-				                                        </a>
-				                                    </li>
-				                                    <li>
-				                                        <a href="<?= site_url() ?>adminpanel/tambahblog">
-				                                            Tambah
-				                                        </a>
-				                                    </li>
-				                                </ul>
-				                            </li>
+											<a class="nav-link" href="#">
+												Kegiatan
+											</a>
+											<ul class="nav nav-children">
+												<li>
+													<a href="<?= site_url() ?>adminpanel/blog">
+														Semua
+													</a>
+												</li>
+												<li>
+													<a href="<?= site_url() ?>adminpanel/tambahblog">
+														Tambah
+													</a>
+												</li>
+											</ul>
+										</li>
 									</ul>
 								</li>
 								<li class="nav-parent">
@@ -242,18 +247,35 @@
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/kontak">
 												Kontak
 											</a>
 										</li>
-										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
+										<li class="nav-parent">
+											<a class="nav-link" href="#">
 												Bank
+											</a>
+											<ul class="nav nav-children">
+												<li>
+													<a href="<?= site_url() ?>adminpanel/bank">
+														Semua
+													</a>
+												</li>
+												<li>
+													<a href="<?= site_url() ?>adminpanel/tambahbank">
+														Tambah
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/motto">
+												Motto
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="<?= site_url() ?>adminpanel/">
-												Motto
+											<a class="nav-link" href="<?= site_url() ?>adminpanel/lainnya">
+												Lain-lain
 											</a>
 										</li>
 									</ul>

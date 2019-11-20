@@ -1,12 +1,12 @@
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Blog</h2>
+        <h2>Setting</h2>
 
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs mr-3">
                 <li><i class="fas fa-home"></i></li>
-                <li><span>Blog</span></li>
-                <li><span>Semua</span></li>
+                <li><span>Setting</span></li>
+                <li><span>Bank</span></li>
             </ol>
         </div>
     </header>
@@ -21,7 +21,8 @@
                         <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
                         <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
-                    <h2 class="card-title">Blog</h2>
+
+                    <h2 class="card-title">Bank</h2>
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message') ?>
@@ -29,22 +30,24 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Judul</th>
-                                <th>Date</th>
+                                <th>Bank</th>
+                                <th>Atas Nama</th>
+                                <th>No. Rekening</th>
                                 <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no = 1;
-                            foreach ($blog as $r) { ?>
+                            foreach ($bank as $r) { ?>
                                 <tr>
                                     <td><?= $no; ?>.</td>
-                                    <td><?= $r->judul; ?></td>
-                                    <td><?= $r->date; ?></td>
-                                    <td class="text-center"><a href="<?= site_url() ?>adminpanel/editblog/<?= $r->id_blog ?>"><i class="fas fa-edit fa-lg text-dark"></i></a></td>
+                                    <td><?= $r->bank; ?></td>
+                                    <td><?= $r->atas_nama; ?></td>
+                                    <td><?= $r->no_rekening; ?></td>
+                                    <td class="text-center"><a href="<?= site_url() ?>adminpanel/editbank/<?= $r->id_bank ?>"><i class="fas fa-edit fa-lg text-dark"></i></a></td>
                                 </tr>
-                            <?php $no++;
-                            } ?>
+                            <?php $no++; } ?>
                         </tbody>
                     </table>
                 </div>

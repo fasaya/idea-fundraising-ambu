@@ -4,25 +4,27 @@
             <div class="col-md-12 col-lg-3 text-center text-lg-left mb-5 mb-lg-0">
                 <h5 class="text-5 text-transform-none font-weight-semibold text-color-default mb-4">Hubungi Kami</h5>
                 <ul class="list list-unstyled">
-                    <li class="mb-1"><a href="https://api.whatsapp.com/send?phone=6281933357030" class="link-hover-style-1"><i class="fab fa-whatsapp text-color-primary"></i><span class="text-color-default opacity-7 pl-2">(800) 123-4567</span></a></li>
-                    <li class="mb-1"><a href="tel:555-555-5555" class="link-hover-style-1"><i class="fas fa-phone text-color-primary"></i><span class="text-color-default opacity-7 pl-2">(800) 123-4567</span></a></li>
-                    <li class="mb-1"><a href="mailto: abc@example.com" class="link-hover-style-1"><i class="fas fa-envelope text-color-primary"></i><span class="text-color-default opacity-7 pl-2">mail@example.com</span></a></li>
-                    <li class="mb-1"><a class="link-hover-style-1"><i class="fas fa-map-marker-alt text-color-primary"></i><span class="text-color-default opacity-7 pl-2">Jl. Contoh alamat anda No. 45</span></a></li>
+                    <li class="mb-1"><a href="https://api.whatsapp.com/send?phone=<?= $this->Helper->setting('NOWA'); ?>" class="link-hover-style-1"><i class="fab fa-whatsapp text-color-primary"></i><span class="text-color-default opacity-7 pl-2">+<?= $this->Helper->setting('NOWA'); ?></span></a></li>
+                    <li class="mb-1"><a href="tel:<?= $this->Helper->setting('NOHP'); ?>" class="link-hover-style-1"><i class="fas fa-phone text-color-primary"></i><span class="text-color-default opacity-7 pl-2">+<?= $this->Helper->setting('NOHP'); ?></span></a></li>
+                    <li class="mb-1"><a href="mailto: <?= $this->Helper->setting('EMAIL'); ?>" class="link-hover-style-1"><i class="fas fa-envelope text-color-primary"></i><span class="text-color-default opacity-7 pl-2"><?= $this->Helper->setting('EMAIL'); ?></span></a></li>
+                    <li class="mb-1"><a class="link-hover-style-1"><i class="fas fa-map-marker-alt text-color-primary"></i><span class="text-color-default opacity-7 pl-2"><?= $this->Helper->setting('ALAMAT'); ?></span></a></li>
                 </ul>
             </div>
             <div class="col-md-6 col-lg-2 text-center text-lg-left mb-5 mb-lg-0">
                 <h5 class="text-5 text-transform-none font-weight-semibold text-color-default mb-4">Halaman</h5>
                 <ul class="list list-unstyled">
-                    <li class="mb-1"><a href="page-services.html" class="link-hover-style-1 text-color-default"> Our Services</a></li>
-                    <li class="mb-1"><a href="about-us.html" class="link-hover-style-1 text-color-default"> About Us</a></li>
-                    <li class="mb-1"><a href="contact-us.html" class="link-hover-style-1 text-color-default"> Contact Us</a></li>
+                    <li class="mb-1"><a href="<?= site_url() ?>home/tentang" class="link-hover-style-1 text-color-default"> Tentang Yayasan</a></li>
+                    <li class="mb-1"><a href="<?= site_url() ?>home/visidanmisi" class="link-hover-style-1 text-color-default"> Visi dan Misi</a></li>
+                    <li class="mb-1"><a href="<?= site_url() ?>home/adrt" class="link-hover-style-1 text-color-default"> AD/RT</a></li>
+                    <li class="mb-1"><a href="<?= site_url() ?>blog" class="link-hover-style-1 text-color-default"> Blog</a></li>
                 </ul>
             </div>
             <div class="col-md-6 col-lg-2 text-center text-lg-left mb-5 mb-lg-0">
                 <h5 class="text-5 text-transform-none font-weight-semibold text-color-default mb-4">Kegiatan</h5>
                 <ul class="list list-unstyled">
-                    <li class="mb-1"><a href="page-faq.html" class="link-hover-style-1 text-color-default"> FAQ's</a></li>
-                    <li class="mb-1"><a href="sitemap.html" class="link-hover-style-1 text-color-default"> Sitemap</a></li>
+                    <?php foreach ($blog as $r) { ?>
+                        <li class="mb-1"><a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>" class="link-hover-style-1 text-color-default"> <?= $r->judul; ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="col-md-12 col-lg-4 text-center text-lg-left">

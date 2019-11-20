@@ -26,7 +26,8 @@
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message') ?>
-                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
+                        <!-- datatable-tabletools -->
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -59,7 +60,8 @@
                                     <td class="text-center"><?= $this->Helper->anonim($r->anonim); ?></td>
                                     <td class="text-center"><a href="<?= site_url() ?>adminpanel/editdonasi/<?= $r->id_donasi ?>"><i class="fas fa-edit fa-lg text-dark"></i></a></td>
                                 </tr>
-                            <?php $no++; } ?>
+                            <?php $no++;
+                            } ?>
                         </tbody>
                     </table>
                 </div>

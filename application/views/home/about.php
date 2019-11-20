@@ -1,10 +1,10 @@
 <div role="main" class="main">
-    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/home/img/demos/digital-agency/slides/slide-digital-agency-1.jpg" style="min-height: 560px;">
+    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_header'); ?>" style="min-height: 560px;">
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-lg-8 mt-5">
-                    <h1 class="mt-5 pt-5 font-weight-semibold">Tentang Yayasan</h1>
-                    <p class="mb-0 text-4 opacity-7">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                    <h1 class="mt-5 pt-5 font-weight-semibold"><?= $this->Helper->isi_web('tentang_1_title1'); ?></h1>
+                    <p class="mb-0 text-4 opacity-7"><?= $this->Helper->isi_web('tentang_1_title2'); ?></p>
                 </div>
             </div>
         </div>
@@ -14,11 +14,11 @@
 
         <div class="row pt-4 appear-animation" data-appear-animation="fadeInUpShorter">
             <div class="col-lg-7 pr-lg-5">
-                <h2 class="font-weight-normal line-height-1">A place where amazing things <strong class="font-weight-extra-bold">Get Done!</strong></h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat urna arcu, vel molestie nunc commodo non. Nullam vestibulum odio vitae fermentum rutrum.</p>
-                <p>Mauris lobortis nulla ut aliquet interdum. Donec commodo ac elit sed placerat. Mauris rhoncus est ac sodales gravida. In eros felis, elementum aliquam nisi vel, pellentesque faucibus nulla.</p>
+                <h2 class="font-weight-normal line-height-1"><?= $this->Helper->isi_web('tentang_1_judul1'); ?><strong class="font-weight-extra-bold"> <?= $this->Helper->isi_web('tentang_1_judul2'); ?></strong></h2>
+                <p class="lead"><?= $this->Helper->isi_web('tentang_1_isi1'); ?></p>
+                <p><?= $this->Helper->isi_web('tentang_1_isi2'); ?></p>
 
-                <div class="row pt-4 my-5">
+                <!-- <div class="row pt-4 my-5">
                     <div class="col-lg-6">
                         <div class="feature-box feature-box-style-2 mb-4">
                             <div class="feature-box-icon">
@@ -77,35 +77,33 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="col-lg-5">
                 <h4 class="font-weight-normal line-height-1">Hubungi <strong class="font-weight-extra-bold">Kami</strong></h4>
 
-                <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
-                <!-- <div id="googlemaps" class="google-map small"></div> -->
-
                 <ul class="list list-icons list-icons-style-3 mt-4">
-                    <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>
-                    <li><i class="fas fa-phone"></i> <strong>Phone:</strong> (123) 456-789</li>
-                    <li><i class="far fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+                    <li><i class="fas fa-phone"></i> <strong>No. HP:</strong> +<?= $this->Helper->setting('NOHP'); ?></li>
+                    <li><i class="fab fa-whatsapp"></i> <strong>No. Whatsapp:</strong> +<?= $this->Helper->setting('NOWA'); ?></li>
+                    <li><i class="far fa-envelope"></i> <strong>Email:</strong> <a href="mailto:<?= $this->Helper->setting('EMAIL'); ?>"><?= $this->Helper->setting('EMAIL'); ?></a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Alamat:</strong> <?= $this->Helper->setting('ALAMAT'); ?></li>
                 </ul>
 
                 <hr class="my-5">
 
-                <h4 class="font-weight-normal">Business <strong class="font-weight-extra-bold">Hours</strong></h4>
+                <!-- <h4 class="font-weight-normal">Business <strong class="font-weight-extra-bold">Hours</strong></h4>
                 <ul class="list list-icons list-dark mt-4">
                     <li><i class="far fa-clock"></i> Monday - Friday - 9am to 5pm</li>
                     <li><i class="far fa-clock"></i> Saturday - 9am to 2pm</li>
                     <li><i class="far fa-clock"></i> Sunday - Closed</li>
-                </ul>
+                </ul> -->
             </div>
         </div>
 
     </div>
 
-    <section class="section section-default border-0">
+    <!-- <section class="section section-default border-0">
         <div class="container py-4">
             <div class="row counters">
                 <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
@@ -138,9 +136,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="m-5 pb-3">
+    <!-- <section class="m-5 pb-3">
         <div class="container py-4">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -191,9 +189,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="section section-default section-footer border-0">
+    <!-- <section class="section section-default section-footer border-0">
         <div class="container py-4">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -231,5 +229,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </div>

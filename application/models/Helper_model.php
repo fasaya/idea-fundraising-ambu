@@ -21,7 +21,7 @@ class Helper_model extends CI_Model
             return '<span class="badge badge-warning">Anononim</span>';
         } else {
             return '';
-        } 
+        }
     }
 
     function cek_total_donasi_baru()
@@ -44,14 +44,27 @@ class Helper_model extends CI_Model
         }
     }
 
-    function textToSlug($text='') {
+    function isi_web($kode)
+    {
+        //$ket dapat berupa 'nilai' atau 'status'
+        $query = $this->db->query(' SELECT isi
+                                    FROM isi_web
+                                    WHERE kode = "' . $kode . '" ');
+        $result = $query->row_array();
+        if ($result) {
+            return $result['isi'];
+        }
+    }
+
+    function textToSlug($text = '')
+    {
         $text = trim($text);
         if (empty($text)) return '';
-          $text = preg_replace("/[^a-zA-Z0-9\-\s]+/", "", $text);
-          $text = strtolower(trim($text));
-          $text = str_replace(' ', '-', $text);
-          $text = $text_ori = preg_replace('/\-{2,}/', '-', $text);
-          return $text;  
+        $text = preg_replace("/[^a-zA-Z0-9\-\s]+/", "", $text);
+        $text = strtolower(trim($text));
+        $text = str_replace(' ', '-', $text);
+        $text = $text_ori = preg_replace('/\-{2,}/', '-', $text);
+        return $text;
     }
 
     // sssssssssssssssssssss

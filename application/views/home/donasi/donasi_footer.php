@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h4 class="card-title mb-1 text-4 font-weight-bold">Donasi</h4>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi.</p>
-                <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Pelajari lebih lanjut <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
+                <a href="<?= base_url() ?>home/tentang" class="read-more text-color-primary font-weight-semibold text-2">Pelajari lebih lanjut <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
             </div>
         </div>
     </div>
@@ -50,18 +50,18 @@
         </div>
     </section> -->
 
-<section class="bg-color-grey-scale-1 call-to-action call-to-action-default no-top-arrow content-align-center call-to-action-in-footer mt-0">
+<section class="bg-color-grey-scale-1 call-to-action call-to-action-default no-top-arrow content-align-center call-to-action-in-footer mt-0 mb-0">
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-lg-9">
                 <div class="call-to-action-content">
-                    <h2 class="font-weight-normal text-6 mb-0">Porto is <strong class="font-weight-extra-bold">everything</strong> you need to create an <strong class="font-weight-extra-bold">awesome</strong> website!</h2>
-                    <p class="mb-0">The best HTML template for your new website.</p>
+                    <h2 class="font-weight-normal text-6 mb-0"><?= $this->Helper->isi_web('motto_1_a'); ?> <strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('motto_1_b'); ?></strong> <?= $this->Helper->isi_web('motto_1_c'); ?> <strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('motto_1_d'); ?></strong> <?= $this->Helper->isi_web('motto_1_e'); ?></h2>
+                    <p class="mb-0"><?= $this->Helper->isi_web('motto_1_sub'); ?></p>
                 </div>
             </div>
             <div class="col-md-3 col-lg-3">
                 <div class="call-to-action-btn">
-                    <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-outline btn-dark text-1 font-weight-semibold text-uppercase px-5 btn-py-2">Learn More</a>
+                    <a href="<?= site_url() ?>home/tentang" target="_blank" class="btn btn-outline btn-dark text-1 font-weight-semibold text-uppercase px-5 btn-py-2">Pelajari</a>
                 </div>
             </div>
         </div>

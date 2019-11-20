@@ -1,6 +1,6 @@
             <div role="main" class="main">
 
-            	<section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/img/demos/digital-agency/slides/slide-digital-agency-1.jpg" style="min-height: 560px;">
+            	<section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_header'); ?>" style="min-height: 560px;">
             		<div class="container">
             			<div class="row justify-content-center mt-5">
             				<div class="col-lg-8 mt-5">
@@ -19,31 +19,31 @@
 
             					<div class="row">
 
-								<?php foreach ($blog as $r){ ?>
-							
-            						<div class="col-md-4">
-            							<article class="post post-medium border-0 pb-0 mb-5">
-            								<div class="post-image">
-            									<a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>">
-            										<img src="<?= base_url() ?>template/images/blog/<?= $r->img; ?>" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-            									</a>
-            								</div>
+            						<?php foreach ($blog as $r) { ?>
 
-            								<div class="post-content">
-
-            									<h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>"><?= $r->judul; ?></a></h2>
-            									<p><?= substr($r->isi, 0, 135); ?></p>
-
-            									<div class="post-meta">
-            										<span><i class="far fa-folder"></i> <?= $r->date; ?></span>
-            										<span class="d-block mt-2"><a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+            							<div class="col-md-4">
+            								<article class="post post-medium border-0 pb-0 mb-5">
+            									<div class="post-image">
+            										<a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>">
+            											<img src="<?= base_url() ?>template/images/blog/<?= $r->img; ?>" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+            										</a>
             									</div>
 
-            								</div>
-            							</article>
-									</div>
-								
-									<?php } ?>
+            									<div class="post-content">
+
+            										<h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>"><?= $r->judul; ?></a></h2>
+            										<p><?= substr($r->isi, 0, 135); ?></p>
+
+            										<div class="post-meta">
+            											<span><i class="far fa-folder"></i> <?= $r->date; ?></span>
+            											<span class="d-block mt-2"><a href="<?= site_url() ?>blog/read/<?= $r->slug; ?>" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+            										</div>
+
+            									</div>
+            								</article>
+            							</div>
+
+            						<?php } ?>
 
             					</div>
 

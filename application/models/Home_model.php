@@ -8,6 +8,7 @@ class Home_model extends CI_Model
         $header['kosong'] = "";
 
         $footer['bank'] = $this->bank();
+        $footer['blog'] = $this->kegiatan_5();
 
         $this->load->view('home/v_header', $header);
         $this->load->view($view, $main);
@@ -18,6 +19,7 @@ class Home_model extends CI_Model
     {
         $header['kosong'] = "";
         $footer['bank'] = $this->bank();
+        $footer['blog'] = $this->kegiatan_5();
 
         $this->load->view('home/v_header', $header);
         $this->load->view('home/donasi/donasi_header');
@@ -29,8 +31,18 @@ class Home_model extends CI_Model
     function bank()
     {
         $this->db->select("*");
+        $this->db->where("is_deleted = '0'");
         $this->db->from("bank");
         $this->db->order_by("bank", "ASC");
+        return $this->db->get()->result();
+    }
+
+    function kegiatan_5()
+    {
+        $this->db->select("slug, img, judul");
+        $this->db->from("tb_blog");
+        $this->db->order_by("id_blog", "DESC");
+        $this->db->limit(5);
         return $this->db->get()->result();
     }
 } //end model

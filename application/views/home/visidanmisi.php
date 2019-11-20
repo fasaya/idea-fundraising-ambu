@@ -1,10 +1,10 @@
 <div role="main" class="main">
-    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/home/img/demos/digital-agency/slides/slide-digital-agency-1.jpg" style="min-height: 560px;">
+    <section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_header'); ?>" style="min-height: 560px;">
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-lg-8 mt-5">
-                    <h1 class="mt-5 pt-5 font-weight-semibold">Visi dan Misi</h1>
-                    <p class="mb-0 text-4 opacity-7">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                    <h1 class="mt-5 pt-5 font-weight-semibold"><?= $this->Helper->isi_web('visimisi_1_title1'); ?></h1>
+                    <p class="mb-0 text-4 opacity-7"><?= $this->Helper->isi_web('visimisi_1_title2'); ?></p>
                 </div>
             </div>
         </div>
@@ -15,36 +15,36 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="font-weight-extra-bold">Company</h4>
-                        <p class="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                        <h4 class="font-weight-extra-bold">Visi</h4>
+                        <p class=""><?= $this->Helper->isi_web('visimisi_1_visi'); ?></p>
                     </div>
                     <div class="col-lg-6">
-                        <h4 class="font-weight-extra-bold">Mission</h4>
-                        <p class="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.</p>
+                        <h4 class="font-weight-extra-bold">Misi</h4>
+                        <p class=""><?= $this->Helper->isi_web('visimisi_1_misi'); ?></p>
                     </div>
                 </div>
 
                 <blockquote class="mt-5 ml-4 blockquote-primary">
-                    <p>Pellentesque pellentesque eget tempor tellus. Fusce lacllentesque eget tempor tellus ellentesque pelleinia tempor malesuada.</p>
-                    <footer>- David Doe, CEO</footer>
+                    <p><?= $this->Helper->isi_web('visimisi_1_quotes1'); ?></p>
+                    <footer>- <?= $this->Helper->isi_web('visimisi_1_quotes2'); ?></footer>
                 </blockquote>
             </div>
             <div class="col-lg-3 d-none d-sm-block">
                 <div class="row text-center mt-5 mt-lg-0">
                     <div class="col-md-8 col-lg-6 mx-auto">
-                        <img class="img-fluid m-3 my-0 mt-lg-5" src="<?= base_url() ?>template/home/img/demos/digital-agency/office/our-office-1.jpg" alt="Office">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/home/img/demos/digital-agency/office/our-office-3.jpg" alt="Office">
+                        <img class="img-fluid m-3 my-0 mt-lg-5" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('visimisi_2_img2a'); ?>" alt="Office">
+                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('visimisi_2_img2b'); ?>" alt="Office">
                     </div>
                     <div class="col-md-8 col-lg-6 mx-auto">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/home/img/demos/digital-agency/office/our-office-2.jpg" alt="Office">
-                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/home/img/demos/digital-agency/office/our-office-4.jpg" alt="Office">
+                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('visimisi_2_img2c'); ?>" alt="Office">
+                        <img class="img-fluid m-3 my-0" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('visimisi_2_img2d'); ?>" alt="Office">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="section section-default border-0">
+    <!-- <section class="section section-default border-0">
         <div class="container py-4">
             <div class="row counters">
                 <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
@@ -170,5 +170,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </div>

@@ -15,6 +15,7 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$main['donasi'] = $this->Admin->donasi();
+		$main['kegiatan'] = $this->Home->kegiatan_5();
 		$this->Home->view('home/home', $main);
 	}
 
@@ -34,5 +35,11 @@ class Home extends CI_Controller
 	{
 		$main['kosong'] = "";
 		$this->Home->view('home/adrt', $main);
+	}
+
+	public function strukturorganisasi()
+	{
+		$main['kosong'] = "";
+		$this->Home->view('home/struktur_organisasi', $main);
 	}
 }

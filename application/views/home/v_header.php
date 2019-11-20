@@ -98,7 +98,7 @@
 
 <body>
 
-    <a href="https://wa.me/15551234567" class="float" target="_blank">
+    <a href="https://wa.me/<?= $this->Helper->setting('NOWA'); ?>" class="float" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
     </a>
 
@@ -139,9 +139,15 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="nav-link" href="demo-digital-agency-services.html">
+                                                    <a class="nav-link" href="<?= site_url() ?>home/adrt">
                                                         AD/RT
                                                     </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link" href="<?= site_url() ?>home/strukturorganisasi">
+                                                        Struktur Organisasi
+                                                    </a>
+                                                </li>
                                                 </li>
                                                 <li>
                                                     <a class="nav-link" href="<?= site_url() ?>blog">
@@ -162,8 +168,8 @@
                                 </div>
                                 <div class="ml-2 order-1 order-lg-2">
                                     <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean ml-0">
-                                        <li class="social-icons-whatsapp"><a href="https://api.whatsapp.com/send?phone=6281933357030" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a></li>
-                                        <li class="social-icons-phone"><a href="tel:555-555-5555" target="_blank" title="Phone"><i class="fas fa-phone"></i></a></li>
+                                        <li class="social-icons-whatsapp"><a href="https://api.whatsapp.com/send?phone=<?= $this->Helper->setting('NOWA'); ?>" target="_blank" title="Whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                                        <li class="social-icons-phone"><a href="tel:<?= $this->Helper->setting('NOHP'); ?>" target="_blank" title="Phone"><i class="fas fa-phone"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

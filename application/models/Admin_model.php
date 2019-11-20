@@ -112,7 +112,7 @@ class Admin_model extends CI_Model
             'anonim' => $data['anonim'],
             'keterangan' => $data['keterangan']
         ];
-        $this->db->update('tb_donasi', $data_donasi, "id_donasi = '".$data['id_donasi']."'");
+        $this->db->update('tb_donasi', $data_donasi, "id_donasi = '" . $data['id_donasi'] . "'");
 
         //Start database transaction
         $this->db->trans_complete();
@@ -202,6 +202,504 @@ class Admin_model extends CI_Model
                 </div>'
             );
             redirect('adminpanel/donasibaru');
+        }
+    }
+
+    // Update kontak
+
+    public function editKontak($data)
+    {
+        //Start database transaction
+        $this->db->trans_start();
+
+        $this->db->update('tb_setting', ['nilai' => $data['nowa']], "kode = 'NOWA'");
+        $this->db->update('tb_setting', ['nilai' => $data['nohp']], "kode = 'NOHP'");
+        $this->db->update('tb_setting', ['nilai' => $data['email']], "kode = 'EMAIL'");
+        $this->db->update('tb_setting', ['nilai' => $data['alamat']], "kode = 'ALAMAT'");
+
+        //Start database transaction
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Error!
+                </div>'
+            );
+            redirect('adminpanel/kontak');
+        } else {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil update Kontak.
+                </div>'
+            );
+            redirect('adminpanel/kontak');
+        }
+    }
+
+    // Update halaman HOME
+
+    public function updateHome($data)
+    {
+
+        $tipe = $data['tipe'];
+
+        if ($tipe == "1" || $tipe == "2") {
+
+            //Start database transaction
+            $this->db->trans_start();
+
+            if ($_FILES['gambar']['name'] != NULL) {
+
+                $fileName = $_FILES['gambar']['name'];
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+                $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+                // Set preference 
+                $config['upload_path'] = './template/images/isi';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+                $config['file_name'] = $fileNameNew;
+
+                // Load upload library 
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload('gambar')) {
+                    $fotolama = $this->Helper->isi_web('home_' . $tipe . '_img');
+                    $path = "./template/images/isi/" . $fotolama;
+                    if (!unlink($path)) {
+                        // echo "Error hapus gambar.";
+                    }
+
+                    //upload
+                    $uploadData = $this->upload->data();
+
+                    // Get data about the file
+                    $filename = $uploadData['file_name'];
+
+                    //insert into table
+                    if ($tipe == "1") {
+                        $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_1_img'");
+                        $this->db->update('isi_web', ['isi' => $data['judul1']], "kode = 'home_1_judul1'");
+                        $this->db->update('isi_web', ['isi' => $data['judul2']], "kode = 'home_1_judul2'");
+                        $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'home_1_isi1'");
+                        $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'home_1_isi2'");
+                    } elseif ($tipe == "2") {
+                        $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_2_img'");
+                        $this->db->update('isi_web', ['isi' => $data['judul1']], "kode = 'home_2_judul1'");
+                        $this->db->update('isi_web', ['isi' => $data['judul2']], "kode = 'home_2_judul2'");
+                        $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'home_2_isi1'");
+                        $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'home_2_isi2'");
+                    }
+
+
+                    //Start database transaction
+                    $this->db->trans_complete();
+
+                    if ($this->db->trans_status() === FALSE) {
+                        $this->session->set_flashdata(
+                            'message_' . $tipe,
+                            '<div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Gagal!
+                            </div>'
+                        );
+                        redirect('adminpanel/halamanhome');
+                    } else {
+                        $this->session->set_flashdata(
+                            'message_' . $tipe,
+                            '<div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Berhasil update!
+                            </div>'
+                        );
+                        redirect('adminpanel/halamanhome');
+                    }
+                } else {
+
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->session->set_flashdata(
+                        'message_' . $tipe,
+                        '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        ' . $error['error'] . '
+                        </div>'
+                    );
+                    redirect('adminpanel/halamanhome');
+                }
+            } else {
+                //insert into table
+                if ($tipe == "1") {
+                    $this->db->update('isi_web', ['isi' => $data['judul1']], "kode = 'home_1_judul1'");
+                    $this->db->update('isi_web', ['isi' => $data['judul2']], "kode = 'home_1_judul2'");
+                    $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'home_1_isi1'");
+                    $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'home_1_isi2'");
+                } elseif ($tipe == "2") {
+                    $this->db->update('isi_web', ['isi' => $data['judul1']], "kode = 'home_2_judul1'");
+                    $this->db->update('isi_web', ['isi' => $data['judul2']], "kode = 'home_2_judul2'");
+                    $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'home_2_isi1'");
+                    $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'home_2_isi2'");
+                }
+
+                //Start database transaction
+                $this->db->trans_complete();
+
+                if ($this->db->trans_status() === FALSE) {
+                    $this->session->set_flashdata(
+                        'message_' . $tipe,
+                        '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Gagal!
+                        </div>'
+                    );
+                    redirect('adminpanel/halamanhome');
+                } else {
+                    $this->session->set_flashdata(
+                        'message_' . $tipe,
+                        '<div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Berhasil update!
+                        </div>'
+                    );
+                    redirect('adminpanel/halamanhome');
+                }
+            }
+        }
+    }
+
+    public function updateHomeGambar($tipe)
+    {
+
+        //Start database transaction
+        $this->db->trans_start();
+
+        $fileName = $_FILES['gambar']['name'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+        // Set preference 
+        $config['upload_path'] = './template/images/isi';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+        $config['file_name'] = $fileNameNew;
+
+        // Load upload library 
+        $this->load->library('upload', $config);
+
+        // File upload
+        if ($this->upload->do_upload('gambar')) {
+            $fotolama = $this->Helper->isi_web('home_3_gbr' . $tipe);
+            $path = "./template/images/isi/" . $fotolama;
+            if (!unlink($path)) {
+                // echo "Error hapus gambar.";
+            }
+
+            //upload
+            $uploadData = $this->upload->data();
+
+            // Get data about the file
+            $filename = $uploadData['file_name'];
+
+            //insert into table
+
+            $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_3_gbr" . $tipe . "'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_3',
+                    '<div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Gagal menambahkan!
+                            </div>'
+                );
+                redirect('adminpanel/halamanhome');
+            } else {
+                $this->session->set_flashdata(
+                    'message_3',
+                    '<div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Berhasil update!
+                            </div>'
+                );
+                redirect('adminpanel/halamanhome');
+            }
+        } else {
+
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata(
+                'message_3',
+                '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        ' . $error['error'] . '
+                        </div>'
+            );
+            redirect('adminpanel/halamanhome');
+        }
+    }
+
+    public function updateVisimisiGambar($tipe)
+    {
+
+        //Start database transaction
+        $this->db->trans_start();
+
+        $fileName = $_FILES['gambar']['name'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+        // Set preference 
+        $config['upload_path'] = './template/images/isi';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+        $config['file_name'] = $fileNameNew;
+
+        // Load upload library 
+        $this->load->library('upload', $config);
+
+        // File upload
+        if ($this->upload->do_upload('gambar')) {
+            $fotolama = $this->Helper->isi_web('visimisi_2_img' . $tipe);
+            $path = "./template/images/isi/" . $fotolama;
+            if (!unlink($path)) {
+                // echo "Error hapus gambar.";
+            }
+
+            //upload
+            $uploadData = $this->upload->data();
+
+            // Get data about the file
+            $filename = $uploadData['file_name'];
+
+            //insert into table
+
+            $this->db->update('isi_web', ['isi' => $filename], "kode = 'visimisi_2_img" . $tipe . "'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Gagal menambahkan!
+                            </div>'
+                );
+                redirect('adminpanel/halamanvisimisi');
+            } else {
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Berhasil update!
+                            </div>'
+                );
+                redirect('adminpanel/halamanvisimisi');
+            }
+        } else {
+
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata(
+                'message_2',
+                '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        ' . $error['error'] . '
+                        </div>'
+            );
+            redirect('adminpanel/halamanvisimisi');
+        }
+    }
+
+    public function updateLainnyaGambarHeader()
+    {
+
+        //Start database transaction
+        $this->db->trans_start();
+
+        $fileName = $_FILES['gambar']['name'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+        // Set preference 
+        $config['upload_path'] = './template/images/isi';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+        $config['file_name'] = $fileNameNew;
+
+        // Load upload library 
+        $this->load->library('upload', $config);
+
+        // File upload
+        if ($this->upload->do_upload('gambar')) {
+            $fotolama = $this->Helper->isi_web('lain_header');
+            $path = "./template/images/isi/" . $fotolama;
+            if (!unlink($path)) {
+                // echo "Error hapus gambar.";
+            }
+
+            //upload
+            $uploadData = $this->upload->data();
+
+            // Get data about the file
+            $filename = $uploadData['file_name'];
+
+            //insert into table
+
+            $this->db->update('isi_web', ['isi' => $filename], "kode = 'lain_header'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_1',
+                    '<div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Gagal menambahkan!
+                            </div>'
+                );
+                redirect('adminpanel/lainnya');
+            } else {
+                $this->session->set_flashdata(
+                    'message_1',
+                    '<div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Berhasil update!
+                            </div>'
+                );
+                redirect('adminpanel/lainnya');
+            }
+        } else {
+
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        ' . $error['error'] . '
+                        </div>'
+            );
+            redirect('adminpanel/lainnya');
+        }
+    }
+
+    public function updateTentang($data)
+    {
+        //Start database transaction
+        $this->db->trans_start();
+
+        $this->db->update('isi_web', ['isi' => $data['title1']], "kode = 'tentang_1_title1'");
+        $this->db->update('isi_web', ['isi' => $data['title2']], "kode = 'tentang_1_title2'");
+        $this->db->update('isi_web', ['isi' => $data['judul1']], "kode = 'tentang_1_judul1'");
+        $this->db->update('isi_web', ['isi' => $data['judul2']], "kode = 'tentang_1_judul2'");
+        $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'tentang_1_isi1'");
+        $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'tentang_1_isi2'");
+
+        //Start database transaction
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Gagal!
+                </div>'
+            );
+            redirect('adminpanel/halamantentang');
+        } else {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil update!
+                </div>'
+            );
+            redirect('adminpanel/halamantentang');
+        }
+    }
+
+    public function updateMotto($data)
+    {
+        //Start database transaction
+        $this->db->trans_start();
+
+        $this->db->update('isi_web', ['isi' => $data['isi1']], "kode = 'motto_1_a'");
+        $this->db->update('isi_web', ['isi' => $data['isi2']], "kode = 'motto_1_b'");
+        $this->db->update('isi_web', ['isi' => $data['isi3']], "kode = 'motto_1_c'");
+        $this->db->update('isi_web', ['isi' => $data['isi4']], "kode = 'motto_1_d'");
+        $this->db->update('isi_web', ['isi' => $data['isi5']], "kode = 'motto_1_e'");
+        $this->db->update('isi_web', ['isi' => $data['sub']], "kode = 'motto_1_sub'");
+
+        //Start database transaction
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Gagal!
+                </div>'
+            );
+            redirect('adminpanel/motto');
+        } else {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil update!
+                </div>'
+            );
+            redirect('adminpanel/motto');
+        }
+    }
+
+    public function updateVisimisi($data)
+    {
+        //Start database transaction
+        $this->db->trans_start();
+
+        $this->db->update('isi_web', ['isi' => $data['title1']], "kode = 'visimisi_1_title1'");
+        $this->db->update('isi_web', ['isi' => $data['title2']], "kode = 'visimisi_1_title2'");
+        $this->db->update('isi_web', ['isi' => $data['visi']], "kode = 'visimisi_1_visi'");
+        $this->db->update('isi_web', ['isi' => $data['misi']], "kode = 'visimisi_1_misi'");
+        $this->db->update('isi_web', ['isi' => $data['quote1']], "kode = 'visimisi_1_quotes1'");
+        $this->db->update('isi_web', ['isi' => $data['quote2']], "kode = 'visimisi_1_quotes2'");
+
+        //Start database transaction
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Gagal!
+                </div>'
+            );
+            redirect('adminpanel/halamanvisimisi');
+        } else {
+            $this->session->set_flashdata(
+                'message_1',
+                '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil update!
+                </div>'
+            );
+            redirect('adminpanel/halamanvisimisi');
         }
     }
 

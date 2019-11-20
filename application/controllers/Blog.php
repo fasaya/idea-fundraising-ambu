@@ -17,16 +17,16 @@ class Blog extends CI_Controller
 		$this->Home->view('home/blog/all', $main);
 	}
 
-	public function read($slug="")
+	public function read($slug = "")
 	{
-		if ($slug != ""){
+		if ($slug != "") {
 			$query = $this->db->query(' SELECT *
 											FROM tb_blog
 											WHERE slug = "' . $slug . '"');
 			if ($query->num_rows() > 0) {
 				$main['blog'] = $query->row_array();
 				$this->Home->view('home/blog/read_more', $main);
-			}else{
+			} else {
 				redirect('blog');
 			}
 		}

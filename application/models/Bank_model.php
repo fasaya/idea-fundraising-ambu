@@ -1,28 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Blog_model extends CI_Model
+class Bank_model extends CI_Model
 {
-    function get_blog()
-    {
-        $this->db->select("*");
-        $this->db->where("is_deleted = '0'");
-        $this->db->from("tb_blog");
-        $this->db->order_by("date", "DESC");
-        return $this->db->get()->result();
-    }
 
-    // ##############################################
-
-    function tambahblog($data)
+    function tambahBank($data)
     {
-        $fileName = $_FILES['gambarblog']['name'];
+        $fileName = $_FILES['gambar']['name'];
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
-        $fileNameNew = "blog_" . uniqid('', true) . "." . $fileActualExt;
+        $fileNameNew = "bank_" . uniqid('', true) . "." . $fileActualExt;
 
         // Set preference 
-        $config['upload_path'] = './template/images/blog';
+        $config['upload_path'] = './template/images/bank';
         $config['allowed_types'] = 'jpg|jpeg|png';
         $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
         $config['file_name'] = $fileNameNew;
@@ -31,7 +21,7 @@ class Blog_model extends CI_Model
         $this->load->library('upload', $config);
 
         // File upload
-        if ($this->upload->do_upload('gambarblog')) {
+        if ($this->upload->do_upload('gambar')) {
 
             //upload
             $uploadData = $this->upload->data();
@@ -43,14 +33,14 @@ class Blog_model extends CI_Model
             $this->db->trans_start();
 
             //insert into table member
-            $data_img = [
-                'slug' => $this->Helper->textToSlug($data['judul']),
+            $data_u = [
                 'img' => $filename,
-                'judul' => $data['judul'],
-                'isi' => $data['isi'],
-                'date' => new_date()
+                'bank' => $data['bank'],
+                'atas_nama' => $data['atas_nama'],
+                'no_rekening' => $data['no_rekening'],
+                'is_deleted' => "0"
             ];
-            $this->db->insert('tb_blog', $data_img);
+            $this->db->insert('bank', $data_u);
 
             //Start database transaction
             $this->db->trans_complete();
@@ -60,19 +50,19 @@ class Blog_model extends CI_Model
                     'message',
                     '<div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Gagal menambahkan blog!
+                        Gagal menambahkan bank!
                         </div>'
                 );
-                redirect('adminpanel/tambahblog');
+                redirect('adminpanel/bank');
             } else {
                 $this->session->set_flashdata(
                     'message',
                     '<div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Berhasil menambahkan blog baru!
+                        Berhasil menambahkan bank baru!
                         </div>'
                 );
-                redirect('adminpanel/tambahblog');
+                redirect('adminpanel/bank');
             }
         } else {
 
@@ -84,22 +74,22 @@ class Blog_model extends CI_Model
                         ' . $error['error'] . '
                         </div>'
             );
-            redirect('adminpanel/tambahblog');
+            redirect('adminpanel/bank');
         }
     }
 
-    function editBlog($data)
+    function editBank($data)
     {
-        if ($_FILES['gambarblog']['name'] != NULL) {
+        if ($_FILES['gambar']['name'] != NULL) {
 
-            $fileName = $_FILES['gambarblog']['name'];
+            $fileName = $_FILES['gambar']['name'];
             $fileExt = explode('.', $fileName);
             $fileActualExt = strtolower(end($fileExt));
-            $fileNameNew = "blog_" . uniqid('', true) . "." . $fileActualExt;
+            $fileNameNew = "bank_" . uniqid('', true) . "." . $fileActualExt;
 
             // Set preference 
-            $config['upload_path'] = './template/images/blog';
-            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['upload_path'] = './template/images/bank';
+            $config['allowed_types'] = 'png|jpg|jpeg';
             $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
             $config['file_name'] = $fileNameNew;
 
@@ -107,9 +97,9 @@ class Blog_model extends CI_Model
             $this->load->library('upload', $config);
 
             // File upload
-            if ($this->upload->do_upload('gambarblog')) {
+            if ($this->upload->do_upload('gambar')) {
 
-                $path = "./template/images/blog/" . $data["foto_lama"];
+                $path = "./template/images/bank/" . $data["foto_lama"];
                 if (!unlink($path)) {
                     // echo "Error hapus gambar.";
                 }
@@ -125,12 +115,12 @@ class Blog_model extends CI_Model
 
                 //insert into table member
                 $data_update = [
-                    'slug' => $this->Helper->textToSlug($data['judul']),
                     'img' => $filename,
-                    'judul' => $data['judul'],
-                    'isi' => $data['keterangan']
+                    'bank' => $data['bank'],
+                    'atas_nama' => $data['atas_nama'],
+                    'no_rekening' => $data['no_rekening']
                 ];
-                $this->db->update('tb_blog', $data_update, "id_blog = '" . $data['id_blog'] . "'");
+                $this->db->update('bank', $data_update, "id_bank = '" . $data['id_bank'] . "'");
 
                 //Start database transaction
                 $this->db->trans_complete();
@@ -140,19 +130,19 @@ class Blog_model extends CI_Model
                         'message',
                         '<div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Gagal update blog!
+                        Gagal update bank!
                         </div>'
                     );
-                    redirect('adminpanel/editblog/' . $data['id_blog']);
+                    redirect('adminpanel/editbank/' . $data['id_bank']);
                 } else {
                     $this->session->set_flashdata(
                         'message',
                         '<div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Berhasil upload blog!
+                        Berhasil upload bank!
                         </div>'
                     );
-                    redirect('adminpanel/editblog/' . $data['id_blog']);
+                    redirect('adminpanel/editbank/' . $data['id_bank']);
                 }
             } else {
 
@@ -164,7 +154,7 @@ class Blog_model extends CI_Model
                         ' . $error['error'] . '
                         </div>'
                 );
-                redirect('adminpanel/editblog/' . $data['id_blog']);
+                redirect('adminpanel/editbank/' . $data['id_bank']);
             }
         } else {
             //Start database transaction
@@ -172,11 +162,11 @@ class Blog_model extends CI_Model
 
             //insert into table member
             $data_update = [
-                'slug' => $this->Helper->textToSlug($data['judul']),
-                'judul' => $data['judul'],
-                'isi' => $data['keterangan']
+                'bank' => $data['bank'],
+                'atas_nama' => $data['atas_nama'],
+                'no_rekening' => $data['no_rekening']
             ];
-            $this->db->update('tb_blog', $data_update, "id_blog = '" . $data['id_blog'] . "' AND is_deleted='0'");
+            $this->db->update('bank', $data_update, "id_bank = '" . $data['id_bank'] . "'");
 
             //Start database transaction
             $this->db->trans_complete();
@@ -186,24 +176,24 @@ class Blog_model extends CI_Model
                     'message',
                     '<div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    Gagal update blog!
+                    Gagal update bank!
                     </div>'
                 );
-                redirect('adminpanel/editblog/' . $data['id_blog']);
+                redirect('adminpanel/editbank/' . $data['id_bank']);
             } else {
                 $this->session->set_flashdata(
                     'message',
                     '<div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    Berhasil update blog!
+                    Berhasil update bank!
                     </div>'
                 );
-                redirect('adminpanel/editblog/' . $data['id_blog']);
+                redirect('adminpanel/editbank/' . $data['id_bank']);
             }
         }
     }
 
-    function hapusBlog($id_blog)
+    function hapusBank($id_bank)
     {
 
         //Start database transaction
@@ -213,7 +203,7 @@ class Blog_model extends CI_Model
         $data_update = [
             'is_deleted' => "1"
         ];
-        $this->db->update('tb_blog', $data_update, "id_blog = '" . $id_blog . "'");
+        $this->db->update('bank', $data_update, "id_bank = '" . $id_bank . "'");
 
         //Start database transaction
         $this->db->trans_complete();
@@ -223,19 +213,19 @@ class Blog_model extends CI_Model
                 'message',
                 '<div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Gagal hapus blog!
+                        Gagal hapus bank!
                         </div>'
             );
-            redirect('adminpanel/blog/');
+            redirect('adminpanel/bank');
         } else {
             $this->session->set_flashdata(
                 'message',
                 '<div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        Berhasil hapus blog!
+                        Berhasil hapus bank!
                         </div>'
             );
-            redirect('adminpanel/blog');
+            redirect('adminpanel/bank');
         }
     }
 } //end model

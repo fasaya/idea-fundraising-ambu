@@ -47,7 +47,7 @@
 										<div class="post-meta">
 											<span><i class="far fa-user"></i> Admin</span>
 										</div>
-										<img src="<?= base_url() ?>template/image/blog/<?= $blog['img'] ?>" class="img-fluid float-left mr-4 mt-2" alt="" />
+										<img src="<?= base_url() ?>template/images/blog/<?= $blog['img'] ?>" class="img-fluid float-left mr-4 mt-2" width="300" alt="" />
 										<p><?= $blog['isi'] ?></p>
 							
 									</div>

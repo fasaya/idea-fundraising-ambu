@@ -196,20 +196,20 @@
 				<div id="contain" class="appear-animation table-responsive" data-appear-animation="fadeInRightShorter" style="height: 350px; overflow-y: auto; ">
 					<table class="table table-responsive-md table-striped mb-0 table-hover" id="">
 						<tbody>
-						<?php foreach ($donasi as $r) { 
-							if($r->anonim == "1" ){
-								$nama = "Hamba Allah";
-							}else{
-								$nama = $r->nama;
-							}
-							?>
-							
-                                <tr>
-                                    <td width="40%"><?= $nama; ?></td>
-                                    <td width="30%"><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
+							<?php foreach ($donasi as $r) {
+								if ($r->anonim == "1") {
+									$nama = "Hamba Allah";
+								} else {
+									$nama = $r->nama;
+								}
+								?>
+
+								<tr>
+									<td width="40%"><?= $nama; ?></td>
+									<td width="30%"><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
 									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
 								</tr>
-                            <?php } ?>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -223,12 +223,12 @@
 
 		<div class="row align-items-center pt-4 appear-animation" data-appear-animation="fadeInLeftShorter">
 			<div class="col-md-4 mb-4 mb-md-0">
-				<img class="img-fluid scale-2 pr-5 pr-md-0 my-4" src="<?= base_url() ?>template/images/logo-4.png" alt="layout styles" />
+				<img class="img-fluid scale-2 pr-5 pr-md-0 my-4" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_1_img'); ?>" alt="layout styles" />
 			</div>
 			<div class="col-md-8 pl-md-5">
-				<h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold">Layout</strong> Styles &amp; Variants</h2>
-				<p class="text-4">There are so many styles you can combine that is possible to create almost any kind of layout based on Porto Template, navigate in our preview and see the header variations, the colors, and the page content types that you will be able to use.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat. Sed in nunc nec ligula consectetur mollis in vel justo. Vestibulum ante ipsum primis in faucibus orci.</p>
+				<h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('home_1_judul1'); ?></strong> <?= $this->Helper->isi_web('home_1_judul2'); ?></h2>
+				<p class="text-4"><?= $this->Helper->isi_web('home_1_isi1'); ?></p>
+				<p><?= $this->Helper->isi_web('home_1_isi2'); ?></p>
 			</div>
 		</div>
 
@@ -236,12 +236,12 @@
 
 		<div class="row align-items-center py-5 appear-animation" data-appear-animation="fadeInRightShorter">
 			<div class="col-md-8 pr-md-5 mb-5 mb-md-0">
-				<h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold">Exclusive</strong> Style Switcher</h2>
-				<p class="text-4">With our exlusive Style Switcher you will be able to choose any color you want for your website, choose the layout style (wide / boxed), website type (one page / normal), then generate the css that will be compiled by a {less} proccessor.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat. Sed in nunc nec ligula consectetur mollis in vel justo. Vestibulum ante ipsum primis in faucibus orci.</p>
+				<h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('home_2_judul1'); ?></strong> <?= $this->Helper->isi_web('home_2_judul2'); ?></h2>
+				<p class="text-4"><?= $this->Helper->isi_web('home_2_isi1'); ?></p>
+				<p><?= $this->Helper->isi_web('home_2_isi2'); ?></p>
 			</div>
 			<div class="col-md-4 px-5 px-md-3">
-				<img class="img-fluid scale-2 my-4" src="<?= base_url() ?>template/home/img/style-switcher.png" alt="style switcher" />
+				<img class="img-fluid scale-2 my-4" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_2_img'); ?>" alt="style switcher" />
 			</div>
 		</div>
 
@@ -257,92 +257,47 @@
 	<div class="image-gallery sort-destination full-width mb-0">
 		<div class="isotope-item">
 			<div class="image-gallery-item mb-0">
-				<a href="portfolio-single-wide-slider.html">
-					<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
-						<span class="thumb-info-wrapper">
-							<img src="<?= base_url() ?>template/home/img/projects/project.jpg" class="img-fluid" alt="">
-							<span class="thumb-info-title">
-								<span class="thumb-info-inner">Project Title</span>
-								<!-- <span class="thumb-info-type">Project Type</span> -->
-							</span>
-							<!-- <span class="thumb-info-action">
-								<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
-							</span> -->
-						</span>
+				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+					<span class="thumb-info-wrapper">
+						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3a'); ?>" class="img-fluid" alt="">
 					</span>
-				</a>
+				</span>
 			</div>
 		</div>
 		<div class="isotope-item">
 			<div class="image-gallery-item mb-0">
-				<a href="portfolio-single-wide-slider.html">
-					<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
-						<span class="thumb-info-wrapper">
-							<img src="<?= base_url() ?>template/home/img/projects/project-2.jpg" class="img-fluid" alt="">
-							<span class="thumb-info-title">
-								<span class="thumb-info-inner">Project Title</span>
-								<!-- <span class="thumb-info-type">Project Type</span> -->
-							</span>
-							<!-- <span class="thumb-info-action">
-								<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
-							</span> -->
-						</span>
+				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+					<span class="thumb-info-wrapper">
+						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3b'); ?>" class="img-fluid" alt="">
 					</span>
-				</a>
+				</span>
 			</div>
 		</div>
 		<div class="isotope-item">
 			<div class="image-gallery-item mb-0">
-				<a href="portfolio-single-wide-slider.html">
-					<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
-						<span class="thumb-info-wrapper">
-							<img src="<?= base_url() ?>template/home/img/projects/project-4.jpg" class="img-fluid" alt="">
-							<span class="thumb-info-title">
-								<span class="thumb-info-inner">Project Title</span>
-								<!-- <span class="thumb-info-type">Project Type</span> -->
-							</span>
-							<!-- <span class="thumb-info-action">
-								<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
-							</span> -->
-						</span>
+				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+					<span class="thumb-info-wrapper">
+						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3c'); ?>" class="img-fluid" alt="">
 					</span>
-				</a>
+				</span>
 			</div>
 		</div>
 		<div class="isotope-item">
 			<div class="image-gallery-item mb-0">
-				<a href="portfolio-single-wide-slider.html">
-					<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
-						<span class="thumb-info-wrapper">
-							<img src="<?= base_url() ?>template/home/img/projects/project-5.jpg" class="img-fluid" alt="">
-							<span class="thumb-info-title">
-								<span class="thumb-info-inner">Project Title</span>
-								<!-- <span class="thumb-info-type">Project Type</span> -->
-							</span>
-							<!-- <span class="thumb-info-action">
-								<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
-							</span> -->
-						</span>
+				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+					<span class="thumb-info-wrapper">
+						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3d'); ?>" class="img-fluid" alt="">
 					</span>
-				</a>
+				</span>
 			</div>
 		</div>
 		<div class="isotope-item">
 			<div class="image-gallery-item mb-0">
-				<a href="portfolio-single-wide-slider.html">
-					<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
-						<span class="thumb-info-wrapper">
-							<img src="<?= base_url() ?>template/home/img/projects/project-6.jpg" class="img-fluid" alt="">
-							<span class="thumb-info-title">
-								<span class="thumb-info-inner">Project Title</span>
-								<!-- <span class="thumb-info-type">Project Type</span> -->
-							</span>
-							<!-- <span class="thumb-info-action">
-								<span class="thumb-info-action-icon"><i class="fas fa-plus"></i></span>
-							</span> -->
-						</span>
+				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+					<span class="thumb-info-wrapper">
+						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3e'); ?>" class="img-fluid" alt="">
 					</span>
-				</a>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -352,13 +307,13 @@
 			<div class="row">
 				<div class="col-md-9 col-lg-9">
 					<div class="call-to-action-content">
-						<h2 class="font-weight-normal text-6 mb-0">Porto is <strong class="font-weight-extra-bold">everything</strong> you need to create an <strong class="font-weight-extra-bold">awesome</strong> website!</h2>
-						<p class="mb-0">The best HTML template for your new website.</p>
+						<h2 class="font-weight-normal text-6 mb-0"><?= $this->Helper->isi_web('motto_1_a'); ?> <strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('motto_1_b'); ?></strong> <?= $this->Helper->isi_web('motto_1_c'); ?> <strong class="font-weight-extra-bold"><?= $this->Helper->isi_web('motto_1_d'); ?></strong> <?= $this->Helper->isi_web('motto_1_e'); ?></h2>
+						<p class="mb-0"><?= $this->Helper->isi_web('motto_1_sub'); ?></p>
 					</div>
 				</div>
 				<div class="col-md-3 col-lg-3">
 					<div class="call-to-action-btn">
-						<a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-outline btn-dark text-1 font-weight-semibold text-uppercase px-5 btn-py-2">Learn More</a>
+						<a href="<?= site_url() ?>home/tentang" target="_blank" class="btn btn-outline btn-dark text-1 font-weight-semibold text-uppercase px-5 btn-py-2">Pelajari</a>
 					</div>
 				</div>
 			</div>

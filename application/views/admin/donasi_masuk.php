@@ -26,7 +26,7 @@
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message') ?>
-                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
                         <thead>
                             <tr>
                                 <th>Kode</th>
