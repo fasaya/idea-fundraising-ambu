@@ -36,7 +36,7 @@
 															<i class="fas fa-users"></i>
 														</span>
 													</span>
-													<input type="number" name="donatur" value="<?= $this->Helper->setting('DONATUR'); ?>" placeholder="<?= $this->Helper->setting('DONATUR'); ?>" class="form-control form-control-lg" placeholder="Jumlah donatur" min="0"/>
+													<input type="number" name="donatur" value="<?= $this->Helper->setting('DONATUR'); ?>" placeholder="<?= $this->Helper->setting('DONATUR'); ?>" class="form-control form-control-lg" placeholder="Jumlah donatur" min="0" />
 													<?= form_error('donatur', '<p class="text-danger">', '</p>'); ?>
 												</div>
 											</div>
@@ -99,7 +99,7 @@
 															+62
 														</span>
 													</span>
-													<input type="text" name="phone" class="form-control" placeholder="No. Handphone Donatur" value="<?= set_value('amount'); ?>"/>
+													<input type="text" name="phone" class="form-control" placeholder="No. Handphone Donatur" value="<?= set_value('amount'); ?>" />
 												</div>
 												<?= form_error('phone', '<p class="text-danger">', '</p>'); ?>
 											</div>
@@ -136,7 +136,7 @@
 															Rp
 														</span>
 													</span>
-													<input type="number" name="amount" min="20000" class="form-control form-control-lg" placeholder="100000" value="<?= set_value('amount'); ?>"/>
+													<input type="number" name="amount" min="20000" class="form-control form-control-lg" placeholder="100000" value="<?= set_value('amount'); ?>" />
 												</div>
 												<?= form_error('amount', '<p class="text-danger">', '</p>'); ?>
 											</div>

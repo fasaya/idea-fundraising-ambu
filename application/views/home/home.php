@@ -5,7 +5,7 @@
 			<ul>
 				<li class="slide-overlay slide-overlay-level-7" data-transition="fade">
 
-					<img src="<?= base_url() ?>template/images/img/ambulance-1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="115" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -200" data-offsetend="0 200" data-bgparallax="0" class="rev-slidebg">
+					<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_4_img1'); ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="115" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 -200" data-offsetend="0 200" data-bgparallax="0" class="rev-slidebg">
 
 					<div class="tp-caption tp-caption-overlay-opacity top-label font-weight-semibold" data-frames='[{"delay":1000,"speed":1000,"sfxcolor":"#212529","sfx_effect":"blockfromleft","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#212529","sfx_effect":"blocktoleft","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]' data-x="left" data-hoffset="['0','30','30','30']" data-y="center" data-voffset="['-65','-65','-69','-73']" data-fontsize="['18','18','18','30']" data-paddingtop="['10','10','10','12']" data-paddingbottom="['10','10','10','12']" data-paddingleft="['18','18','18','18']" data-paddingright="['18','18','18','18']"><?= $this->Helper->isi_web('home_4_title1b'); ?></div>
 
@@ -24,7 +24,7 @@
 				</li>
 
 				<li class="slide-overlay slide-overlay-level-7" data-transition="fade">
-					<img src="<?= base_url() ?>template/home/img/demos/digital-agency/slides/slide-digital-agency-3.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="115" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 400px" data-offsetend="0 -400px" data-bgparallax="0" class="rev-slidebg">
+					<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_4_img2'); ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="9000" data-ease="Linear.easeNone" data-scalestart="115" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 400px" data-offsetend="0 -400px" data-bgparallax="0" class="rev-slidebg">
 
 					<div class="tp-caption tp-caption-overlay-opacity top-label font-weight-semibold" data-frames='[{"delay":1000,"speed":1000,"sfxcolor":"#212529","sfx_effect":"blockfromleft","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#212529","sfx_effect":"blocktoleft","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]' data-x="left" data-hoffset="['550','550','550','450']" data-y="center" data-voffset="['-65','-65','-69','-73']" data-fontsize="['18','18','18','30']" data-paddingtop="['10','10','10','12']" data-paddingbottom="['10','10','10','12']" data-paddingleft="['18','18','18','18']" data-paddingright="['18','18','18','18']"><?= $this->Helper->isi_web('home_4_title2b'); ?></div>
 
@@ -190,6 +190,7 @@
 							<th width="40%">Nama</th>
 							<th width="30%">Provinsi</th>
 							<th width="30%">Nominal</th>
+							<th width="30%">Gambar</th>
 						</tr>
 					</thead>
 				</table>
@@ -207,6 +208,7 @@
 								<tr>
 									<td width="40%"><?= $nama; ?></td>
 									<td width="30%"><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
+									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
 									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
 								</tr>
 							<?php } ?>
