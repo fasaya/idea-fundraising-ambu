@@ -47,7 +47,7 @@
 
             					</div>
 
-            					<div class="row">
+            					<!-- <div class="row">
             						<div class="col">
             							<ul class="pagination float-right">
             								<li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
@@ -57,7 +57,7 @@
             								<li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
             							</ul>
             						</div>
-            					</div>
+            					</div> -->
 
             				</div>
             			</div>

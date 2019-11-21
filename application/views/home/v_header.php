@@ -91,6 +91,16 @@
         .social-icons li:hover.social-icons-phone a {
             background: #e5c03c;
         }
+
+
+        /* struktur organisasi */
+        .struktur {
+            height: 70px;
+        }
+
+        .foto {
+            height: 220px !important;
+        }
     </style>
 
 

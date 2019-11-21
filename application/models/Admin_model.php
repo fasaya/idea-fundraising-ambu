@@ -370,6 +370,41 @@ class Admin_model extends CI_Model
                     redirect('adminpanel/halamanhome');
                 }
             }
+        } elseif ($tipe == "4a") {
+
+            //Start database transaction
+            $this->db->trans_start();
+            //insert into table
+
+            $this->db->update('isi_web', ['isi' => $data['title1a']], "kode = 'home_4_title1a'");
+            $this->db->update('isi_web', ['isi' => $data['title1b']], "kode = 'home_4_title1b'");
+            $this->db->update('isi_web', ['isi' => $data['title1c']], "kode = 'home_4_title1c'");
+            $this->db->update('isi_web', ['isi' => $data['title2a']], "kode = 'home_4_title2a'");
+            $this->db->update('isi_web', ['isi' => $data['title2b']], "kode = 'home_4_title2b'");
+            $this->db->update('isi_web', ['isi' => $data['title2c']], "kode = 'home_4_title2c'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_4a',
+                    '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Gagal!
+                </div>'
+                );
+                redirect('adminpanel/halamanhome');
+            } else {
+                $this->session->set_flashdata(
+                    'message_4a',
+                    '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil update!
+                </div>'
+                );
+                redirect('adminpanel/halamanhome');
+            }
         }
     }
 
@@ -408,15 +443,23 @@ class Admin_model extends CI_Model
             $filename = $uploadData['file_name'];
 
             //insert into table
-
-            $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_3_gbr" . $tipe . "'");
+            if ($tipe == "3a" || $tipe == "3b" || $tipe == "3c" || $tipe == "3d" || $tipe == "3e") {
+                $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_3_gbr" . $tipe . "'");
+                $msg = "message_3";
+            } elseif ($tipe == "4b1") {
+                $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_4_img1'");
+                $msg = "message_4b";
+            } elseif ($tipe == "4b2") {
+                $this->db->update('isi_web', ['isi' => $filename], "kode = 'home_4_img2'");
+                $msg = "message_4b";
+            }
 
             //Start database transaction
             $this->db->trans_complete();
 
             if ($this->db->trans_status() === FALSE) {
                 $this->session->set_flashdata(
-                    'message_3',
+                    $msg,
                     '<div class="alert alert-danger">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             Gagal menambahkan!
@@ -425,7 +468,7 @@ class Admin_model extends CI_Model
                 redirect('adminpanel/halamanhome');
             } else {
                 $this->session->set_flashdata(
-                    'message_3',
+                    $msg,
                     '<div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             Berhasil update!
@@ -437,7 +480,7 @@ class Admin_model extends CI_Model
 
             $error = array('error' => $this->upload->display_errors());
             $this->session->set_flashdata(
-                'message_3',
+                $msg,
                 '<div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         ' . $error['error'] . '
@@ -518,6 +561,116 @@ class Admin_model extends CI_Model
                         </div>'
             );
             redirect('adminpanel/halamanvisimisi');
+        }
+    }
+
+    public function updateStrukturOrgGambar($data)
+    {
+        $tipe = $data['tipe'];
+
+        if ($tipe == "a" || $tipe == "b" || $tipe == "c" || $tipe == "d" || $tipe == "e") {
+
+            //Start database transaction
+            $this->db->trans_start();
+
+            $fileName = $_FILES['gambar']['name'];
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+            $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+            // Set preference 
+            $config['upload_path'] = './template/images/isi';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+            $config['file_name'] = $fileNameNew;
+
+            // Load upload library 
+            $this->load->library('upload', $config);
+
+            // File upload
+            if ($this->upload->do_upload('gambar')) {
+                $fotolama = $this->Helper->isi_web('struktur_' . $tipe . '2');
+                $path = "./template/images/isi/" . $fotolama;
+                if (!unlink($path)) {
+                    // echo "Error hapus gambar.";
+                }
+
+                //upload
+                $uploadData = $this->upload->data();
+
+                // Get data about the file
+                $filename = $uploadData['file_name'];
+
+                //insert into table
+                $this->db->update('isi_web', ['isi' => $filename], "kode = 'struktur_" . $tipe . "2'");
+
+                //Start database transaction
+                $this->db->trans_complete();
+
+                if ($this->db->trans_status() === FALSE) {
+                    $this->session->set_flashdata(
+                        'message_2',
+                        '<div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Gagal menambahkan!
+                            </div>'
+                    );
+                    redirect('adminpanel/strukturorg');
+                } else {
+                    $this->session->set_flashdata(
+                        'message_2',
+                        '<div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Berhasil update!
+                            </div>'
+                    );
+                    redirect('adminpanel/strukturorg');
+                }
+            } else {
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        ' . $error['error'] . '
+                        </div>'
+                );
+                redirect('adminpanel/strukturorg');
+            }
+        } elseif ($tipe == "f") {
+            //Start database transaction
+            $this->db->trans_start();
+
+            //insert into table
+            $this->db->update('isi_web', ['isi' => $data['nama_a']], "kode = 'struktur_a1'");
+            $this->db->update('isi_web', ['isi' => $data['nama_b']], "kode = 'struktur_b1'");
+            $this->db->update('isi_web', ['isi' => $data['nama_c']], "kode = 'struktur_c1'");
+            $this->db->update('isi_web', ['isi' => $data['nama_d']], "kode = 'struktur_d1'");
+            $this->db->update('isi_web', ['isi' => $data['nama_e']], "kode = 'struktur_e1'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_1',
+                    '<div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Gagal menambahkan!
+                        </div>'
+                );
+                redirect('adminpanel/strukturorg');
+            } else {
+                $this->session->set_flashdata(
+                    'message_1',
+                    '<div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Berhasil update!
+                        </div>'
+                );
+                redirect('adminpanel/strukturorg');
+            }
         }
     }
 

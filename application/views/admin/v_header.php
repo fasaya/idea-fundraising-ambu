@@ -33,6 +33,7 @@
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/datatables/media/css/dataTables.bootstrap4.css" />
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/pnotify/pnotify.custom.css" />
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
+	<link rel="stylesheet" href="<?= base_url() ?>template/admin/vendor/summernote/summernote-bs4.css" />
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="<?= base_url() ?>template/admin/css/theme.css" />

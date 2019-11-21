@@ -6,7 +6,7 @@
             <ol class="breadcrumbs mr-3">
                 <li><i class="fas fa-home"></i></li>
                 <li><span>Halaman</span></li>
-                <li><span>Visi dan Misi</span></li>
+                <li><span>Struktur Organisasi</span></li>
             </ol>
         </div>
     </header>
@@ -22,68 +22,55 @@
                         <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
 
-                    <h2 class="card-title">Keterangan</h2>
+                    <h2 class="card-title">Nama</h2>
                 </header>
                 <div class="card-body">
-                    <?= $this->session->flashdata('message_1') ?>
-                    <form class="" action="<?= base_url() ?>adminpanel/halamanvisimisi/1" method="post">
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" placeholder="Title" class="form-control form-control-lg py-3 text-3" name="title1" id="name" value="<?= $this->Helper->isi_web('visimisi_1_title1'); ?>">
-                                <?= form_error('title1', '<p class="text-danger mb-0">', '</p>'); ?>
+                    <?= $this->session->flashdata('message_1'); ?>
+                    <div class="mb-3">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/f" enctype="multipart/form-data" method="post">
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Pembina</label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Nama" class="form-control form-control-lg py-3 text-3" name="nama_a" value="<?= $this->Helper->isi_web('struktur_a1'); ?>">
+                                    <?= form_error('nama_a', '<p class="text-danger mb-0">', '</p>'); ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Sub Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" placeholder="Sub Title" class="form-control form-control-lg py-3 text-3" name="title2" id="name" value="<?= $this->Helper->isi_web('visimisi_1_title2'); ?>">
-                                <?= form_error('title2', '<p class="text-danger mb-0">', '</p>'); ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Pengawas</label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Nama" class="form-control form-control-lg py-3 text-3" name="nama_b" value="<?= $this->Helper->isi_web('struktur_b1'); ?>">
+                                    <?= form_error('nama_b', '<p class="text-danger mb-0">', '</p>'); ?>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-lg-3 control-label text-lg-right pt-2">Visi</label>
-                            <div class="col-lg-9">
-                                <textarea name="visi" id="summernote" class="summernote" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>
-                                <?= $this->Helper->isi_web('visimisi_1_visi'); ?>
-								</textarea>
-                                <?= form_error('visi', '<p class="text-danger">', '</p>'); ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Ketua Umum</label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Nama" class="form-control form-control-lg py-3 text-3" name="nama_c" value="<?= $this->Helper->isi_web('struktur_c1'); ?>">
+                                    <?= form_error('nama_c', '<p class="text-danger mb-0">', '</p>'); ?>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-lg-3 control-label text-lg-right pt-2">Misi</label>
-                            <div class="col-lg-9">
-                                <textarea name="misi" id="summernote" class="summernote" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>
-                                <?= $this->Helper->isi_web('visimisi_1_misi'); ?>
-								</textarea>
-                                <?= form_error('misi', '<p class="text-danger">', '</p>'); ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Sekretaris</label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Nama" class="form-control form-control-lg py-3 text-3" name="nama_d" value="<?= $this->Helper->isi_web('struktur_d1'); ?>">
+                                    <?= form_error('nama_d', '<p class="text-danger mb-0">', '</p>'); ?>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Pengutip</label>
-                            <div class="col-sm-9">
-                                <input type="text" placeholder="Sub Title" class="form-control form-control-lg py-3 text-3" name="quote2" id="name" value="<?= $this->Helper->isi_web('visimisi_1_quotes2'); ?>">
-                                <?= form_error('quote2', '<p class="text-danger mb-0">', '</p>'); ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Bendahara</label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Nama" class="form-control form-control-lg py-3 text-3" name="nama_e" value="<?= $this->Helper->isi_web('struktur_e1'); ?>">
+                                    <?= form_error('nama_e', '<p class="text-danger mb-0">', '</p>'); ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Kutipan</label>
-                            <div class="col-sm-9">
-                                <input type="text" placeholder="Title" class="form-control form-control-lg py-3 text-3" name="quote1" id="quote1" value="<?= $this->Helper->isi_web('visimisi_1_quotes1'); ?>">
-                                <?= form_error('quote1', '<p class="text-danger mb-0">', '</p>'); ?>
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2"></label>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit</button>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2"></label>
-                            <div class="col-sm-9">
-                                <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </section>
         </div>
@@ -98,15 +85,15 @@
                         <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
 
-                    <h2 class="card-title">Gambar Kegiatan</h2>
-                    <p class="mb-0">Ukuran gambar yang disarankan 184x145px</p>
+                    <h2 class="card-title">Gambar</h2>
+                    <p class="mb-0">Ukuran gambar yang disarankan 1000x1000px</p>
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message_2'); ?>
                     <div class="mb-3">
-                        <form class="" action="<?= base_url() ?>adminpanel/halamanvisimisi/2a" enctype="multipart/form-data" method="post">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/a" enctype="multipart/form-data" method="post">
                             <div class="form-group row">
-                                <label class="col-sm-3 control-label text-sm-right pt-2">Gambar 1</label>
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Pembina</label>
                                 <div class="col-sm-5">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
@@ -122,7 +109,7 @@
                                             <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
-                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('visimisi_2_img2a'); ?></p>
+                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('struktur_a2'); ?></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit Gambar 1</button>
@@ -131,9 +118,9 @@
                         </form>
                     </div>
                     <div class="mb-3">
-                        <form class="" action="<?= base_url() ?>adminpanel/halamanvisimisi/2b" enctype="multipart/form-data" method="post">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/b" enctype="multipart/form-data" method="post">
                             <div class="form-group row">
-                                <label class="col-sm-3 control-label text-sm-right pt-2">Gambar 2</label>
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Pengawas</label>
                                 <div class="col-sm-5">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
@@ -149,7 +136,7 @@
                                             <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
-                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('visimisi_2_img2b'); ?></p>
+                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('struktur_b2'); ?></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit Gambar 2</button>
@@ -158,9 +145,9 @@
                         </form>
                     </div>
                     <div class="mb-3">
-                        <form class="" action="<?= base_url() ?>adminpanel/halamanvisimisi/2c" enctype="multipart/form-data" method="post">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/c" enctype="multipart/form-data" method="post">
                             <div class="form-group row">
-                                <label class="col-sm-3 control-label text-sm-right pt-2">Gambar 3</label>
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Ketua Umum</label>
                                 <div class="col-sm-5">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
@@ -176,7 +163,7 @@
                                             <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
-                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('visimisi_2_img2c'); ?></p>
+                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('struktur_c2'); ?></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit Gambar 3</button>
@@ -185,9 +172,9 @@
                         </form>
                     </div>
                     <div class="mb-3">
-                        <form class="" action="<?= base_url() ?>adminpanel/halamanvisimisi/2d" enctype="multipart/form-data" method="post">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/d" enctype="multipart/form-data" method="post">
                             <div class="form-group row">
-                                <label class="col-sm-3 control-label text-sm-right pt-2">Gambar 4</label>
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Sekretaris</label>
                                 <div class="col-sm-5">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
@@ -203,7 +190,7 @@
                                             <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
-                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('visimisi_2_img2d'); ?></p>
+                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('struktur_d2'); ?></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit Gambar 4</button>
@@ -211,6 +198,34 @@
                             </div>
                         </form>
                     </div>
+                    <div class="mb-3">
+                        <form class="" action="<?= base_url() ?>adminpanel/strukturorg/e" enctype="multipart/form-data" method="post">
+                            <div class="form-group row">
+                                <label class="col-sm-3 control-label text-sm-right pt-2">Bendahara</label>
+                                <div class="col-sm-5">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input">
+                                                <i class="fas fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileupload-exists">Change</span>
+                                                <span class="fileupload-new">Select file</span>
+                                                <input type="file" name="gambar" />
+                                            </span>
+                                            <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0 text-danger"><?= $this->Helper->isi_web('struktur_e2'); ?></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit Gambar 5</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </section>
         </div>

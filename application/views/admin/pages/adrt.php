@@ -22,44 +22,33 @@
                         <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
 
-                    <h2 class="card-title">Tambah Blog</h2>
+                    <h2 class="card-title">Edit AD/RT</h2>
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message') ?>
-                    <form class="" action="<?= base_url() ?>adminpanel/tambahblog" enctype="multipart/form-data" method="post">
+                    <form class="" action="<?= base_url() ?>adminpanel/halamanadrt" enctype="multipart/form-data" method="post">
                         <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Judul</label>
+                            <label class="col-sm-3 control-label text-sm-right pt-2">Title</label>
                             <div class="col-sm-9">
-                                <input type="text" placeholder="Nama Lengkap" class="form-control form-control-lg py-3 text-3" name="judul" id="name" value="<?= set_value('judul'); ?>">
-                                <?= form_error('judul', '<p class="text-danger">', '</p>'); ?>
+                                <input type="text" placeholder="Title" class="form-control form-control-lg py-3 text-3" name="title1" id="name" value="<?= $this->Helper->isi_web('adrt_title1'); ?>">
+                                <?= form_error('title1', '<p class="text-danger mb-0">', '</p>'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 control-label text-sm-right pt-2">Sub Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Sub Title" class="form-control form-control-lg py-3 text-3" name="title2" id="name" value="<?= $this->Helper->isi_web('adrt_title2'); ?>">
+                                <?= form_error('title2', '<p class="text-danger mb-0">', '</p>'); ?>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Gambar</label>
-                            <div class="col-sm-9">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="input-append">
-                                        <div class="uneditable-input">
-                                            <i class="fas fa-file fileupload-exists"></i>
-                                            <span class="fileupload-preview"></span>
-                                        </div>
-                                        <span class="btn btn-default btn-file">
-                                            <span class="fileupload-exists">Change</span>
-                                            <span class="fileupload-new">Select file</span>
-                                            <input type="file" name="gambarblog" />
-                                        </span>
-                                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Keterangan</label>
-                            <div class="col-sm-9">
-                                <textarea maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="10" class="form-control form-control-lg py-3 text-3" name="keterangan" id="message"><?= set_value('keterangan'); ?></textarea>
-                                <?= form_error('keterangan', '<p class="text-danger">', '</p>'); ?>
+                            <label class="col-lg-3 control-label text-lg-right pt-2">AD/RT</label>
+                            <div class="col-lg-9">
+                                <textarea name="adrt" id="summernote" class="summernote" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>
+                                <?= $this->Helper->isi_web('adrt'); ?>
+                                </textarea>
+                                <?= form_error('adrt', '<p class="text-danger">', '</p>'); ?>
                             </div>
                         </div>
 

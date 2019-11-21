@@ -57,9 +57,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Keterangan</label>
-                            <div class="col-sm-9">
-                                <textarea maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="10" class="form-control form-control-lg py-3 text-3" name="keterangan" id="message"><?= $blog['isi']; ?></textarea>
+                            <label class="col-lg-3 control-label text-lg-right pt-2">Keterangan</label>
+                            <div class="col-lg-9">
+                                <textarea name="keterangan" id="summernote" class="summernote" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>
+                                <?= $blog['isi']; ?>
+								</textarea>
                                 <?= form_error('keterangan', '<p class="text-danger">', '</p>'); ?>
                             </div>
                         </div>

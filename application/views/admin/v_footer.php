@@ -21,6 +21,22 @@
 
 </section>
 
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+    });
+</script>
+
 <!-- Vendor -->
 <script src="<?= base_url() ?>template/admin/vendor/jquery/jquery.js"></script>
 <script src="<?= base_url() ?>template/admin/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -46,6 +62,7 @@
 <script src="<?= base_url() ?>template/admin/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?= base_url() ?>template/admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 <script src="<?= base_url() ?>template/admin/vendor/autosize/autosize.js"></script>
+<script src="<?= base_url() ?>template/admin/vendor/summernote/summernote-bs4.js"></script>
 
 <!-- Theme Base, Components and Settings -->
 <script src="<?= base_url() ?>template/admin/js/theme.js"></script>

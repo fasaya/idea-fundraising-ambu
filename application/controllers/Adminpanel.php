@@ -254,6 +254,33 @@ class Adminpanel extends CI_Controller
 			}
 		} elseif ($tipe == "3a" || $tipe == "3b" || $tipe == "3c" || $tipe == "3d" || $tipe == "3e") {
 			$this->Admin->updateHomeGambar($tipe);
+		} elseif ($tipe == "4a") {
+			$this->form_validation->set_rules('title1a', 'title', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('title1b', 'sub title', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('title1c', 'keterangan', 'trim|xss_clean');
+			$this->form_validation->set_rules('title2a', 'title', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('title2b', 'keterangan', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('title2c', 'sub title', 'trim|xss_clean');
+
+			if ($this->form_validation->run() == false) {
+				$this->halamanhome();
+			} else {
+				$data = [
+					'tipe' => $tipe,
+					'title1a' => $this->input->post('title1a', TRUE),
+					'title1b' => $this->input->post('title1b', TRUE),
+					'title1c' => $this->input->post('title1c', TRUE),
+					'title2a' => $this->input->post('title2a', TRUE),
+					'title2b' => $this->input->post('title2b', TRUE),
+					'title2c' => $this->input->post('title2c', TRUE)
+				];
+
+				if ($tipe == "4a") {
+					$this->Admin->updateHome($data);
+				}
+			}
+		} elseif ($tipe == "4b1" || $tipe == "4b2") {
+			$this->Admin->updateHomeGambar($tipe);
 		} else {
 			$this->halamanhome();
 		}
@@ -292,8 +319,49 @@ class Adminpanel extends CI_Controller
 
 	public function halamanadrt()
 	{
-		$main['kosong'] = "";
-		$this->Admin->view('admin/pages/adrt', $main);
+		$this->form_validation->set_rules('title1', 'title', 'trim|xss_clean|required');
+		$this->form_validation->set_rules('title2', 'sub title', 'trim|xss_clean');
+		$this->form_validation->set_rules('adrt', 'AD/RT', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$main['kosong'] = "";
+			$this->Admin->view('admin/pages/adrt', $main);
+		} else {
+			$adrt = $this->input->post('adrt', TRUE);
+			$title1 = $this->input->post('title1', TRUE);
+			$title2 = $this->input->post('title2', TRUE);
+
+			//Start database transaction
+			$this->db->trans_start();
+
+			//insert into table
+			$this->db->update('isi_web', ['isi' => $adrt], "kode = 'adrt'");
+			$this->db->update('isi_web', ['isi' => $title1], "kode = 'adrt_title1'");
+			$this->db->update('isi_web', ['isi' => $title2], "kode = 'adrt_title2'");
+
+			//Start database transaction
+			$this->db->trans_complete();
+
+			if ($this->db->trans_status() === FALSE) {
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						Gagal!
+						</div>'
+				);
+				redirect('adminpanel/halamanadrt');
+			} else {
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						Berhasil update!
+						</div>'
+				);
+				redirect('adminpanel/halamanadrt');
+			}
+		}
 	}
 
 	// ##########################
@@ -351,7 +419,6 @@ class Adminpanel extends CI_Controller
 			$this->form_validation->set_rules('quote1', 'kutipan', 'trim|xss_clean|required');
 			$this->form_validation->set_rules('quote2', 'pengutip', 'trim|xss_clean|required');
 
-
 			if ($this->form_validation->run() == false) {
 				$main['kosong'] = "";
 				$this->Admin->view('admin/pages/visidanmisi', $main);
@@ -377,10 +444,48 @@ class Adminpanel extends CI_Controller
 	// ##########################
 	// STRUKTUR ORGANISASI
 
-	public function strukturorg()
+	public function strukturorg($tipe = "")
 	{
-		$main['kosong'] = "";
-		$this->Admin->view('admin/struktur_org', $main);
+		if ($tipe == "") {
+			$main['kosong'] = "";
+			$this->Admin->view('admin/pages/struktur_org', $main);
+		} elseif ($tipe == "a" || $tipe == "b" || $tipe == "c" || $tipe == "d" || $tipe == "e") {
+			$nama = 'nama_' . $tipe;
+
+			$this->form_validation->set_rules($nama, 'nama', 'trim|xss_clean|required');
+
+			if ($this->form_validation->run() == false) {
+				$data = [
+					'nama' => $this->input->post($nama, TRUE),
+					'tipe' => $tipe
+				];
+				$this->Admin->updateStrukturOrgGambar($data);
+			} else {
+				$this->strukturorg();
+			}
+		} elseif ($tipe == "f") {
+			$this->form_validation->set_rules('nama_a', 'nama', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('nama_b', 'nama', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('nama_c', 'nama', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('nama_d', 'nama', 'trim|xss_clean|required');
+			$this->form_validation->set_rules('nama_e', 'nama', 'trim|xss_clean|required');
+
+			if ($this->form_validation->run() == false) {
+				$this->strukturorg();
+			} else {
+				$data = [
+					'tipe' => $tipe,
+					'nama_a' => $this->input->post('nama_a', TRUE),
+					'nama_b' => $this->input->post('nama_b', TRUE),
+					'nama_c' => $this->input->post('nama_c', TRUE),
+					'nama_d' => $this->input->post('nama_d', TRUE),
+					'nama_e' => $this->input->post('nama_e', TRUE)
+				];
+				$this->Admin->updateStrukturOrgGambar($data);
+			}
+		} else {
+			$this->strukturorg();
+		}
 	}
 
 
@@ -425,7 +530,7 @@ class Adminpanel extends CI_Controller
 		if ($query->num_rows() > 0 && $id_bank != "") {
 			$this->form_validation->set_rules('bank', 'bank', 'trim|xss_clean|required');
 			$this->form_validation->set_rules('atas_nama', 'atas nama', 'trim|xss_clean|required');
-			$this->form_validation->set_rules('no_rekening', 'no rekening', 'trim|numeric|xss_clean|required');
+			$this->form_validation->set_rules('no_rekening', 'no rekening', 'trim|xss_clean|required');
 
 			if ($this->form_validation->run() == false) {
 

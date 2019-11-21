@@ -63,10 +63,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 control-label text-sm-right pt-2">Sub Keterangan</label>
-                            <div class="col-sm-9">
-                                <textarea maxlength="5000" placeholder="Sub Keterangan" rows="5" class="form-control form-control-lg py-3 text-3" name="keterangan2" id="message"><?= $this->Helper->isi_web('tentang_1_isi2'); ?></textarea>
-                                <?= form_error('keterangan2', '<p class="text-danger mb-0">', '</p>'); ?>
+                            <label class="col-lg-3 control-label text-lg-right pt-2">Sub Keterangan</label>
+                            <div class="col-lg-9">
+                                <textarea name="keterangan2" id="summernote" class="summernote" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>
+                                <?= $this->Helper->isi_web('tentang_1_isi2'); ?>
+                                </textarea>
+                                <?= form_error('keterangan2', '<p class="text-danger">', '</p>'); ?>
                             </div>
                         </div>
 

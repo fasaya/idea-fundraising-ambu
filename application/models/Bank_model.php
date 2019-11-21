@@ -142,7 +142,7 @@ class Bank_model extends CI_Model
                         Berhasil upload bank!
                         </div>'
                     );
-                    redirect('adminpanel/editbank/' . $data['id_bank']);
+                    redirect('adminpanel/bank');
                 }
             } else {
 
@@ -188,7 +188,7 @@ class Bank_model extends CI_Model
                     Berhasil update bank!
                     </div>'
                 );
-                redirect('adminpanel/editbank/' . $data['id_bank']);
+                redirect('adminpanel/bank');
             }
         }
     }

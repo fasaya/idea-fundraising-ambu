@@ -22,7 +22,7 @@
                         <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                     </div>
 
-                    <h2 class="card-title">Basic with Table Tools</h2>
+                    <h2 class="card-title">Donasi (Baru)</h2>
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message') ?>
