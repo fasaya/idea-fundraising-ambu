@@ -24,10 +24,65 @@ class Adminpanel extends CI_Controller
 	}
 
 	// #######################
+	// login
+
+	public function datalogin()
+	{
+		$this->form_validation->set_rules('username', 'username', 'trim|required|alpha_dash|xss_clean');
+		$this->form_validation->set_rules('password', 'password', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$query = $this->db->query(' SELECT *
+											FROM tb_login
+											WHERE id_user = "' . $this->session->userdata('id_user') . '"');
+			$main['user'] = $query->row_array();
+			$this->Admin->view('admin/data_login', $main);
+		} else {
+			$data = [
+				'username' => $this->input->post('username', TRUE),
+				'password' => password_hash($this->input->post('password', TRUE), PASSWORD_BCRYPT)
+			];
+
+			//Start database transaction
+			$this->db->trans_start();
+
+			//insert into table
+
+			$this->db->update('tb_login', $data, "id_user = '" . $this->session->userdata('id_user') . "'");
+
+			//Start database transaction
+			$this->db->trans_complete();
+
+			if ($this->db->trans_status() === FALSE) {
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-danger">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						 Gagal!
+						 </div>'
+				);
+				redirect('adminpanel/datalogin');
+			} else {
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-success">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						 Berhasil update!
+						 </div>'
+				);
+				redirect('adminpanel/datalogin');
+			}
+		}
+	}
+
+
+	// #######################
 	// DONASI
 
 	public function donasi()
 	{
+		$main['provinsi'] = $this->Donasi->provinsi();
+		$main['bank'] = $this->Donasi->bank();
 		$main['donasi'] = $this->Admin->donasi();
 		$this->Admin->view('admin/donasi_konfirmasi', $main);
 	}
@@ -91,6 +146,11 @@ class Adminpanel extends CI_Controller
 		$this->Admin->view('admin/donasi_masuk', $main);
 	}
 
+	public function hapusdonasi($id_donasi = "")
+	{
+		$this->Admin->hapusDonasi($id_donasi);
+	}
+
 	public function tambahonasibaru()
 	{
 		$this->form_validation->set_rules('name', 'nama lengkap', 'trim|required|xss_clean');
@@ -103,7 +163,7 @@ class Adminpanel extends CI_Controller
 		$this->form_validation->set_rules('bank', 'bank', 'numeric|required');
 
 		if ($this->form_validation->run() == false) {
-			$this->index();
+			$this->donasi();
 		} else {
 			if ($this->input->post('anonim', TRUE) == NULL || $this->input->post('anonim', TRUE) == "") {
 				$anon = '0';
@@ -399,6 +459,18 @@ class Adminpanel extends CI_Controller
 	{
 		if ($tipe == "a") {
 			$this->Admin->updateLainnyaGambarHeader();
+		} elseif ($tipe == "b") {
+			$this->form_validation->set_rules('judul', 'judul', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required|xss_clean');
+			if ($this->form_validation->run() == false) {
+				$this->lainnya();
+			} else {
+				$data = [
+					'judul' => $this->input->post('judul', TRUE),
+					'keterangan' => $this->input->post('keterangan', TRUE)
+				];
+				$this->Admin->updateKetDonasi($data);
+			}
 		} else {
 			$main['kosong'] = "";
 			$this->Admin->view('admin/lainnya', $main);

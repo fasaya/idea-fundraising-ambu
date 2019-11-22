@@ -1,6 +1,6 @@
             <div role="main" class="main">
 
-            	<section class="parallax section section-text-light section-parallax section-center mt-0 mb-5" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_header'); ?>" style="min-height: 560px;">
+            	<section class="parallax section section-text-light section-parallax section-center mt-0 mb-0" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_header'); ?>" style="min-height: 560px;">
             		<div class="container">
             			<div class="row justify-content-center mt-5">
             				<div class="col-lg-8 mt-5">
@@ -11,7 +11,55 @@
             		</div>
             	</section>
 
-            	<div class="container py-4">
+            	<div class="image-gallery sort-destination full-width mb-0">
+            		<div class="isotope-item">
+            			<div class="image-gallery-item mb-0">
+            				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+            					<span class="thumb-info-wrapper">
+            						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3a'); ?>" class="img-fluid" alt="">
+            					</span>
+            				</span>
+            			</div>
+            		</div>
+            		<div class="isotope-item">
+            			<div class="image-gallery-item mb-0">
+            				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+            					<span class="thumb-info-wrapper">
+            						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3b'); ?>" class="img-fluid" alt="">
+            					</span>
+            				</span>
+            			</div>
+            		</div>
+            		<div class="isotope-item">
+            			<div class="image-gallery-item mb-0">
+            				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+            					<span class="thumb-info-wrapper">
+            						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3c'); ?>" class="img-fluid" alt="">
+            					</span>
+            				</span>
+            			</div>
+            		</div>
+            		<div class="isotope-item">
+            			<div class="image-gallery-item mb-0">
+            				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+            					<span class="thumb-info-wrapper">
+            						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3d'); ?>" class="img-fluid" alt="">
+            					</span>
+            				</span>
+            			</div>
+            		</div>
+            		<div class="isotope-item">
+            			<div class="image-gallery-item mb-0">
+            				<span class="thumb-info thumb-info-centered-info thumb-info-no-borders">
+            					<span class="thumb-info-wrapper">
+            						<img src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('home_3_gbr3e'); ?>" class="img-fluid" alt="">
+            					</span>
+            				</span>
+            			</div>
+            		</div>
+            	</div>
+
+            	<div class="container py-4 mt-5">
 
             		<div class="row">
             			<div class="col">

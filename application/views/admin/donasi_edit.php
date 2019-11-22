@@ -173,6 +173,7 @@
 										Anonim
 									</label>
 								</div>
+								<a href="<?= base_url() ?>adminpanel/hapusdonasi/<?= $id_donasi; ?>" class="mb-1 mt-1 mr-1 btn btn-danger">Delete</a>
 								<button type="submit" class="mb-1 mt-1 mr-1 btn btn-primary">Submit</button>
 							</div>
 						</div>

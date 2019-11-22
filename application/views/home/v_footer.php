@@ -17,7 +17,7 @@
                     <li class="mb-1"><a href="<?= site_url() ?>home/visidanmisi" class="link-hover-style-1 text-color-default"> Visi dan Misi</a></li>
                     <li class="mb-1"><a href="<?= site_url() ?>home/adrt" class="link-hover-style-1 text-color-default"> AD/RT</a></li>
                     <li class="mb-1"><a href="<?= site_url() ?>home/strukturorganisasi" class="link-hover-style-1 text-color-default"> Struktur Organisasi</a></li>
-                    <li class="mb-1"><a href="<?= site_url() ?>blog" class="link-hover-style-1 text-color-default"> Blog</a></li>
+                    <li class="mb-1"><a href="<?= site_url() ?>blog" class="link-hover-style-1 text-color-default"> Kegiatan</a></li>
                 </ul>
             </div>
             <div class="col-md-6 col-lg-2 text-center text-lg-left mb-5 mb-lg-0">

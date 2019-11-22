@@ -216,7 +216,7 @@
 										} else {
 											if ($r->img != "") {
 												$image = "isi/" . $r->img;
-											}else {
+											} else {
 												$image = "img/donatur.png";
 											}
 										}

@@ -44,6 +44,7 @@ class Admin_model extends CI_Model
     {
         $this->db->select("*");
         $this->db->from("tb_donasi");
+        $this->db->where("is_deleted = '0'");
         $this->db->order_by("date", "DESC");
         return $this->db->get()->result();
     }
@@ -52,28 +53,83 @@ class Admin_model extends CI_Model
     // ADD
     public function addDonasiBaru($data)
     {
-        $fileName = $_FILES['gambar']['name'];
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
-        $fileNameNew = "dntr_" . uniqid('', true) . "." . $fileActualExt;
+        if ($_FILES['gambar']['name'] != NULL) {
 
-        // Set preference 
-        $config['upload_path'] = './template/images/isi';
-        $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['max_size'] = '512'; // max_size in kb (1 mb = 1024 kb)
-        $config['file_name'] = $fileNameNew;
+            $fileName = $_FILES['gambar']['name'];
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+            $fileNameNew = "dntr_" . uniqid('', true) . "." . $fileActualExt;
 
-        // Load upload library 
-        $this->load->library('upload', $config);
+            // Set preference 
+            $config['upload_path'] = './template/images/isi';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = '512'; // max_size in kb (1 mb = 1024 kb)
+            $config['file_name'] = $fileNameNew;
 
-        // File upload
-        if ($this->upload->do_upload('gambar')) {
-            //upload
-            $uploadData = $this->upload->data();
+            // Load upload library 
+            $this->load->library('upload', $config);
 
-            // Get data about the file
-            $filename = $uploadData['file_name'];
+            // File upload
+            if ($this->upload->do_upload('gambar')) {
+                //upload
+                $uploadData = $this->upload->data();
 
+                // Get data about the file
+                $filename = $uploadData['file_name'];
+
+                //Start database transaction
+                $this->db->trans_start();
+
+                //insert
+                $data_donasi = [
+                    'nama' => $data['nama'],
+                    'no_hp' => $data['no_hp'],
+                    'email' => $data['email'],
+                    'provinsi' => $data['provinsi'],
+                    'jumlah_donasi' => $data['jumlah_donasi'],
+                    'date' => new_date(),
+                    'bank' => $data['bank'],
+                    'anonim' => $data['anonim'],
+                    'img' => $filename,
+                    'keterangan' => $data['keterangan']
+                ];
+                $this->db->insert('tb_donasi', $data_donasi);
+
+                //Start database transaction
+                $this->db->trans_complete();
+
+                if ($this->db->trans_status() === FALSE) {
+                    $this->session->set_flashdata(
+                        'message_add_donatur',
+                        '<div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Error!
+                </div>'
+                    );
+                    redirect('adminpanel/donasi');
+                } else {
+                    $this->session->set_flashdata(
+                        'message_add_donatur',
+                        '<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Berhasil tambah data donasi!
+                </div>'
+                    );
+                    redirect('adminpanel/donasi');
+                }
+            } else {
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata(
+                    'message_add_donatur',
+                    '<div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    ' . $error['error'] . '
+                    </div>'
+                );
+                redirect('adminpanel/donasi');
+            }
+        } else {
             //Start database transaction
             $this->db->trans_start();
 
@@ -87,7 +143,6 @@ class Admin_model extends CI_Model
                 'date' => new_date(),
                 'bank' => $data['bank'],
                 'anonim' => $data['anonim'],
-                'img' => $filename,
                 'keterangan' => $data['keterangan']
             ];
             $this->db->insert('tb_donasi', $data_donasi);
@@ -99,32 +154,57 @@ class Admin_model extends CI_Model
                 $this->session->set_flashdata(
                     'message_add_donatur',
                     '<div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                Error!
-                </div>'
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            Error!
+            </div>'
                 );
                 redirect('adminpanel/donasi');
             } else {
                 $this->session->set_flashdata(
                     'message_add_donatur',
                     '<div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                Berhasil tambah data donasi!
-                </div>'
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            Berhasil tambah data donasi!
+            </div>'
                 );
-                redirect('adminpanel');
+                redirect('adminpanel/donasi');
             }
-        } else {
+        }
+    }
 
-            $error = array('error' => $this->upload->display_errors());
+    function hapusDonasi($id_donasi)
+    {
+
+        //Start database transaction
+        $this->db->trans_start();
+
+        //insert into table member
+        $data_update = [
+            'is_deleted' => "1"
+        ];
+        $this->db->update('tb_donasi', $data_update, "id_donasi = '" . $id_donasi . "'");
+
+        //Start database transaction
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
             $this->session->set_flashdata(
-                'message_add_donatur',
+                'message',
                 '<div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    ' . $error['error'] . '
-                    </div>'
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Gagal hapus!
+                        </div>'
             );
-            redirect('adminpanel');
+            redirect('adminpanel/donasi');
+        } else {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        Berhasil hapus!
+                        </div>'
+            );
+            redirect('adminpanel/donasi');
         }
     }
 
@@ -153,7 +233,7 @@ class Admin_model extends CI_Model
                                             WHERE id_donasi = "' . $data['id_donasi'] . '"');
                 if ($query->num_rows() > 0) {
                     $result = $query->row_array();
-                    
+
                     $fotolama = $result['img'];
                     $path = "./template/images/isi/" . $fotolama;
                     if (!unlink($path)) {
@@ -939,6 +1019,114 @@ class Admin_model extends CI_Model
                 </div>'
             );
             redirect('adminpanel/motto');
+        }
+    }
+
+    public function updateKetDonasi($data)
+    {
+        if ($_FILES['gambar']['name'] != NULL) {
+
+            $fileName = $_FILES['gambar']['name'];
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+            $fileNameNew = "isi_" . uniqid('', true) . "." . $fileActualExt;
+
+            // Set preference 
+            $config['upload_path'] = './template/images/isi';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = '1024'; // max_size in kb (1 mb = 1024 kb)
+            $config['file_name'] = $fileNameNew;
+
+            // Load upload library 
+            $this->load->library('upload', $config);
+
+            // File upload
+            if ($this->upload->do_upload('gambar')) {
+                $fotolama = $this->Helper->isi_web('lain_donasi_img');
+                $path = "./template/images/isi/" . $fotolama;
+                if (!unlink($path)) {
+                    // echo "Error hapus gambar.";
+                }
+
+                //upload
+                $uploadData = $this->upload->data();
+
+                // Get data about the file
+                $filename = $uploadData['file_name'];
+
+                //Start database transaction
+                $this->db->trans_start();
+
+                //insert into table
+
+                $this->db->update('isi_web', ['isi' => $filename], "kode = 'lain_donasi_img'");
+                $this->db->update('isi_web', ['isi' => $data['judul']], "kode = 'lain_donasi1'");
+                $this->db->update('isi_web', ['isi' => $data['keterangan']], "kode = 'lain_donasi2'");
+
+                //Start database transaction
+                $this->db->trans_complete();
+
+                if ($this->db->trans_status() === FALSE) {
+                    $this->session->set_flashdata(
+                        'message_2',
+                        '<div class="alert alert-danger">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                             Gagal!
+                             </div>'
+                    );
+                    redirect('adminpanel/lainnya');
+                } else {
+                    $this->session->set_flashdata(
+                        'message_2',
+                        '<div class="alert alert-success">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                             Berhasil update!
+                             </div>'
+                    );
+                    redirect('adminpanel/lainnya');
+                }
+            } else {
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-danger">
+                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                         ' . $error['error'] . '
+                         </div>'
+                );
+                redirect('adminpanel/lainnya');
+            }
+        } else {
+            //Start database transaction
+            $this->db->trans_start();
+
+            //insert into table
+            $this->db->update('isi_web', ['isi' => $data['judul']], "kode = 'lain_donasi1'");
+            $this->db->update('isi_web', ['isi' => $data['keterangan']], "kode = 'lain_donasi2'");
+
+            //Start database transaction
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE) {
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-danger">
+                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                         Gagal!
+                         </div>'
+                );
+                redirect('adminpanel/lainnya');
+            } else {
+                $this->session->set_flashdata(
+                    'message_2',
+                    '<div class="alert alert-success">
+                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                         Berhasil update!
+                         </div>'
+                );
+                redirect('adminpanel/lainnya');
+            }
         }
     }
 

@@ -71,7 +71,7 @@
 						<div class="form-group mb-3">
 							<div class="clearfix">
 								<label class="float-left">Password</label>
-								<a href="<?= site_url() ?>webadmin/reset" class="float-right">Forget Password?</a>
+								<!-- <a href="<?= site_url() ?>webadmin/reset" class="float-right">Forget Password?</a> -->
 							</div>
 							<div class="input-group">
 								<input name="password" type="password" class="form-control form-control-lg" />

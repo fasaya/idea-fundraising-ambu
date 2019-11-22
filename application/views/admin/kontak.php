@@ -66,11 +66,12 @@
                                             <i class="fas fa-envelope"></i>
                                         </span>
                                     </span>
-                                    <input type="text" name="email" value="<?= $this->Helper->setting('EMAIL'); ?>" placeholder="<?= $this->Helper->setting('EMAIL'); ?>" class="form-control"/>
+                                    <input type="text" name="email" value="<?= $this->Helper->setting('EMAIL'); ?>" placeholder="<?= $this->Helper->setting('EMAIL'); ?>" class="form-control" />
                                     <?= form_error('email', '<p class="text-danger">', '</p>'); ?>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label class="col-sm-3 control-label text-sm-right pt-2">Alamat</label>
                             <div class="col-sm-9">

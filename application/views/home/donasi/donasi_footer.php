@@ -3,10 +3,10 @@
         <!-- <h4 class="mb-4">Image Top</h4> -->
 
         <div class="card">
-            <img class="card-img-top" src="<?= base_url() ?>template/home/img/blog/wide/blog-11.jpg" alt="Card Image">
+            <img class="card-img-top" src="<?= base_url() ?>template/images/isi/<?= $this->Helper->isi_web('lain_donasi_img'); ?>" alt="Card Image">
             <div class="card-body">
-                <h4 class="card-title mb-1 text-4 font-weight-bold">Donasi</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi.</p>
+                <h4 class="card-title mb-1 text-4 font-weight-bold"><?= $this->Helper->isi_web('lain_donasi1'); ?></h4>
+                <p class="card-text"><?= $this->Helper->isi_web('lain_donasi2'); ?></p>
                 <a href="<?= base_url() ?>home/tentang" class="read-more text-color-primary font-weight-semibold text-2">Pelajari lebih lanjut <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
             </div>
         </div>

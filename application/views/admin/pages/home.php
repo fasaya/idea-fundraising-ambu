@@ -328,7 +328,7 @@
                     </div>
 
                     <h2 class="card-title">Gambar Kegiatan</h2>
-                    <p class="mb-0">Ukuran gambar yang disarankan 1000x1000px</p>
+                    <p class="mb-0">Gambar kegiatan tampil pada halaman Home dan Kegiatan. Ukuran gambar yang disarankan 1000x1000px.</p>
                 </header>
                 <div class="card-body">
                     <?= $this->session->flashdata('message_3'); ?>

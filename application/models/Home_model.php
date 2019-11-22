@@ -41,6 +41,7 @@ class Home_model extends CI_Model
     {
         $this->db->select("slug, img, judul");
         $this->db->from("tb_blog");
+        $this->db->where("is_deleted", "0");
         $this->db->order_by("id_blog", "DESC");
         $this->db->limit(5);
         return $this->db->get()->result();

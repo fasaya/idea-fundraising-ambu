@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
--- https://www.phpmyadmin.net/
+-- version 4.5.0.2
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 21, 2019 at 03:00 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 5.6.37
+-- Host: 127.0.0.1
+-- Generation Time: Nov 22, 2019 at 11:31 AM
+-- Server version: 10.0.17-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -115,7 +113,7 @@ INSERT INTO `isi_web` (`id`, `kode`, `isi`) VALUES
 (49, 'struktur_d2', 'isi_5dd626e8df3398_06286253.jpg'),
 (50, 'struktur_e1', 'Brigita MB'),
 (51, 'struktur_e2', 'isi_5dd626efb5cb06_94996185.jpg'),
-(52, 'adrt', '                                                                                                                                                                                                                                                                                                                                                                                                <div xss=\"removed\"><p xss=\"removed\"><b xss=removed>test</b></p></div>                                                                                                                                                                                                                                                                                                         '),
+(52, 'adrt', '                                                                                                                                                                                                                                                                                                                                                                                                <div xss="removed"><p xss="removed"><b xss=removed>test</b></p></div>                                                                                                                                                                                                                                                                                                         '),
 (53, 'home_4_title1a', 'YAYASAN KASIH FIBONACCI INDONESIA'),
 (54, 'home_4_title1b', 'HADIR UNTUK BANGSA'),
 (55, 'home_4_title1c', 'Melayani Sepenuh Hati'),
@@ -125,7 +123,10 @@ INSERT INTO `isi_web` (`id`, `kode`, `isi`) VALUES
 (59, 'home_4_img1', 'isi_5dd64185cf7f77_64446377.jpg'),
 (60, 'home_4_img2', 'isi_5dd641e6eda9a6_84893440.jpg'),
 (61, 'adrt_title1', 'AD/RT'),
-(62, 'adrt_title2', 'Loreem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.');
+(62, 'adrt_title2', 'Loreem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nulla consequat massa quis enim.'),
+(63, 'lain_donasi1', 'Donasi'),
+(64, 'lain_donasi2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nulla dui, in dapi.'),
+(65, 'lain_donasi_img', 'isi_5dd7566a34efb7_49276253.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,9 @@ INSERT INTO `login_history` (`id_log`, `id_user`, `ip_address`, `user_agent`, `d
 (29, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36', '2019-11-20 11:19:50'),
 (30, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-21 11:57:23'),
 (31, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-21 13:01:38'),
-(32, 1, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-21 21:05:10');
+(32, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-22 11:07:33'),
+(33, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-22 11:08:01'),
+(34, 1, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36', '2019-11-22 14:03:56');
 
 -- --------------------------------------------------------
 
@@ -231,7 +234,7 @@ CREATE TABLE `tb_blog` (
 INSERT INTO `tb_blog` (`id_blog`, `slug`, `img`, `judul`, `isi`, `date`, `is_deleted`) VALUES
 (1, 'class-aptent-taciti-sociosqu-ad-litora-torquent', 'logo-2.png', 'Class aptent taciti sociosqu ad litora torquent', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lectus lacus, rutrum sit amet placerat et, bibendum nec mauris. Duis molestie, purus eget placerat viverra, nisi odio gravida sapien, congue tincidunt nisl ante nec tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit, mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent nec tempus nibh. Donec mollis commodo metus et fringilla. Etiam venenatis, diam id adipiscing convallis, nisi eros lobortis tellus, feugiat adipiscing ante ante sit amet dolor. Vestibulum vehicula scelerisque facilisis. Sed faucibus placerat bibendum. Maecenas sollicitudin commodo justo, quis hendrerit leo consequat ac. Proin sit amet risus sapien, eget interdum dui. Proin justo sapien, varius sit amet hendrerit id, egestas quis mauris.\r\n\r\nUt ac elit non mi pharetra dictum nec quis nibh. Pellentesque ut fringilla elit. Aliquam non ipsum id leo eleifend sagittis id a lorem. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam massa mauris, viverra et rhoncus a, feugiat ut sem. Quisque ultricies diam tempus quam molestie vitae sodales dolor sagittis. Praesent commodo sodales purus. Maecenas scelerisque ligula vitae leo adipiscing a facilisis nisl ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;\r\n\r\nCurabitur non erat quam, id volutpat leo. Nullam pretium gravida urna et interdum. Suspendisse in dui tellus. Cras luctus nisl vel risus adipiscing aliquet. Phasellus convallis lorem dui. Quisque hendrerit, lectus ut accumsan gravida, leo tellus porttitor mi, ac mattis eros nunc vel enim. Nulla facilisi. Nam non nulla sed nibh sodales auctor eget non augue. Pellentesque sollicitudin consectetur mauris, eu mattis mi dictum ac. Etiam et sapien eu nisl dapibus fermentum et nec tortor.\r\n\r\nCurabitur nec nulla lectus, non hendrerit lorem. Quisque lorem risus, porttitor eget fringilla non, vehicula sed tortor. Proin enim quam, vulputate at lobortis quis, condimentum at justo. Phasellus nec nisi justo. Ut luctus sagittis nulla at dapibus. Aliquam ullamcorper commodo elit, quis ornare eros consectetur a. Curabitur nulla dui, fermentum sed dapibus at, adipiscing eget nisi. Aenean iaculis vehicula imperdiet. Donec suscipit leo sed metus vestibulum pulvinar. Phasellus bibendum magna nec tellus fringilla faucibus. Phasellus mollis scelerisque volutpat. Ut sed molestie turpis. Phasellus ultrices suscipit tellus, ac vehicula ligula condimentum et.\r\n\r\nAenean metus nibh, molestie at consectetur nec, molestie sed nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec euismod urna. Donec gravida pharetra ipsum, non volutpat ipsum sagittis a. Phasellus ut convallis ipsum. Sed nec dui orci, nec hendrerit massa. Curabitur at risus suscipit massa varius accumsan. Proin eu nisi id velit ultrices viverra nec condimentum magna. Ut porta orci quis nulla aliquam at dictum mi viverra. Maecenas ultricies elit in tortor scelerisque facilisis. Mauris vehicula porttitor lacus, vel pretium est semper non. Ut accumsan rhoncus metus non pharetra. Quisque luctus blandit nisi, id tempus tellus pulvinar eu. Nam ornare laoreet mi a molestie. Donec sodales scelerisque congue.', '2019-11-04 06:18:25', '0'),
 (2, 'test-bikin-judul', 'blog_5dd3c95ef13123_07566092.jpg', 'test bikin judul', 'sbss', '2019-11-19 18:52:15', '0'),
-(5, 'tes-1-2-3', 'blog_5dd50862cd5613_49351826.jpg', 'tes 1 2 3', 'sfs asbjabvlacsss', '2019-11-20 11:22:37', '0');
+(5, 'tes-1-2-3', 'blog_5dd50862cd5613_49351826.jpg', 'tes 1 2 3', 'sfs asbjabvlacsss', '2019-11-20 11:22:37', '1');
 
 -- --------------------------------------------------------
 
@@ -250,18 +253,21 @@ CREATE TABLE `tb_donasi` (
   `bank` int(11) DEFAULT NULL,
   `keterangan` text NOT NULL,
   `img` varchar(200) NOT NULL,
-  `anonim` enum('0','1') NOT NULL
+  `anonim` enum('0','1') NOT NULL,
+  `is_deleted` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_donasi`
 --
 
-INSERT INTO `tb_donasi` (`id_donasi`, `nama`, `no_hp`, `email`, `provinsi`, `jumlah_donasi`, `date`, `bank`, `keterangan`, `img`, `anonim`) VALUES
-(1, 'sssssssss', '242423', 'sdc@dsf.ov', 64, '20000', '2019-11-19 14:13:31', 3, '', '', '1'),
-(2, 'sss', '354', 'dd@d.co', 62, '20002', '2019-11-19 14:38:40', 2, '', '', '1'),
-(3, 'adax', '234567', 'dsf@d.vo', 65, '20000', '2019-11-19 14:38:53', 4, 's', '', '0'),
-(4, 'adaxssssss', '23456755', 'dsf@d.voss', 17, '20004', '2019-11-19 16:08:54', 2, 'ssss', '', '1');
+INSERT INTO `tb_donasi` (`id_donasi`, `nama`, `no_hp`, `email`, `provinsi`, `jumlah_donasi`, `date`, `bank`, `keterangan`, `img`, `anonim`, `is_deleted`) VALUES
+(1, 'sssssssss', '242423', 'sdc@dsf.ov', 64, '20000', '2019-11-19 14:13:31', 3, '', '', '1', '0'),
+(2, 'sss', '354', 'dd@d.co', 62, '20002', '2019-11-19 14:38:40', 2, '', '', '1', '0'),
+(3, 'adax', '234567', 'dsf@d.vo', 65, '20000', '2019-11-19 14:38:53', 4, 's', '', '0', '1'),
+(4, 'adaxssssss', '23456755', 'dsf@d.voss', 17, '20004', '2019-11-19 16:08:54', 2, 'ssss', '', '1', '0'),
+(5, 'bre', '32', 'sdc@sc.co', 19, '20000', '2019-11-22 11:46:06', 2, '', '', '0', '1'),
+(6, 'gwavr', '246', 'sefcew@adx.com', 51, '400000', '2019-11-22 11:47:11', 2, '', '', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -310,7 +316,7 @@ CREATE TABLE `tb_login` (
 --
 
 INSERT INTO `tb_login` (`id_user`, `username`, `password`, `keterangan`, `email`) VALUES
-(1, 'admin', '$2y$10$OVjoNl4cE12phgIM/jO4cOlik0PSh.gClloYk49utA9e6jR59Cj1W', 'admin', 'adminweb@gmail.com');
+(1, 'admin', '$2y$10$ILjN0oQktXN/ZPWKG1as/u0JrbVzv3.4OlWfpY9i/pzv2/E.HS1eG', 'admin', 'adminweb@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -414,50 +420,41 @@ ALTER TABLE `tb_setting`
 --
 ALTER TABLE `bank`
   MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `isi_web`
 --
 ALTER TABLE `isi_web`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT for table `login_history`
 --
 ALTER TABLE `login_history`
-  MODIFY `id_log` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
+  MODIFY `id_log` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `tb_blog`
 --
 ALTER TABLE `tb_blog`
   MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tb_donasi_baru`
 --
 ALTER TABLE `tb_donasi_baru`
   MODIFY `id_donasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tb_setting`
 --
 ALTER TABLE `tb_setting`
   MODIFY `id_setting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
