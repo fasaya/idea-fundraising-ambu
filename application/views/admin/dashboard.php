@@ -81,7 +81,7 @@
 								</header>
 								<div class="card-body">
 									<?= $this->session->flashdata('message_add_donatur') ?>
-									<form class="" action="<?= base_url() ?>adminpanel/tambahonasibaru" method="post">
+									<form class="" action="<?= base_url() ?>adminpanel/tambahonasibaru" enctype="multipart/form-data" method="post">
 										<div class="form-group row">
 											<label class="col-sm-3 control-label text-sm-right pt-2">Nama Lengkap</label>
 											<div class="col-sm-7">
@@ -161,6 +161,26 @@
 											<div class="col-sm-5">
 												<textarea maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control form-control-lg py-3 text-3" name="message" id="message"><?= set_value('message'); ?></textarea>
 												<?= form_error('message', '<p class="text-danger">', '</p>'); ?>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-sm-3 control-label text-sm-right pt-2">Gambar</label>
+											<div class="col-sm-9">
+												<div class="fileupload fileupload-new" data-provides="fileupload">
+													<div class="input-append">
+														<div class="uneditable-input">
+															<i class="fas fa-file fileupload-exists"></i>
+															<span class="fileupload-preview"></span>
+														</div>
+														<span class="btn btn-default btn-file">
+															<span class="fileupload-exists">Change</span>
+															<span class="fileupload-new">Select file</span>
+															<input type="file" name="gambar" />
+														</span>
+														<a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+													</div>
+												</div>
 											</div>
 										</div>
 

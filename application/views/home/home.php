@@ -189,8 +189,8 @@
 						<tr>
 							<th width="40%">Nama</th>
 							<th width="30%">Provinsi</th>
-							<th width="30%">Nominal</th>
-							<th width="30%">Gambar</th>
+							<th width="20%">Nominal</th>
+							<th width="10%">Gambar</th>
 						</tr>
 					</thead>
 				</table>
@@ -208,8 +208,20 @@
 								<tr>
 									<td width="40%"><?= $nama; ?></td>
 									<td width="30%"><?= $this->Helper->nama_provinsi($r->provinsi); ?></td>
-									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
-									<td width="30%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
+									<td width="20%">Rp <?= rupiah($r->jumlah_donasi); ?></td>
+									<!-- <td width="30%">Rp <?= $r->img; ?></td> -->
+									<?php
+										if ($r->anonim == "1") {
+											$image = "img/donatur.png";
+										} else {
+											if ($r->img != "") {
+												$image = "isi/" . $r->img;
+											}else {
+												$image = "img/donatur.png";
+											}
+										}
+										?>
+									<td width="10%"><img src="<?= base_url() ?>template/images/<?= $image ?>" alt="" height="40"></td>
 								</tr>
 							<?php } ?>
 						</tbody>

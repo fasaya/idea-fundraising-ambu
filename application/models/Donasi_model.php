@@ -15,6 +15,7 @@ class Donasi_model extends CI_Model
     {
         $this->db->select("*");
         $this->db->from("bank");
+        $this->db->where("is_deleted = '0'");
         $this->db->order_by("bank", "ASC");
         return $this->db->get()->result();
     }
